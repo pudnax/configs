@@ -15,8 +15,8 @@ call plug#begin()
 Plug 'chriskempson/base16-vim'
 Plug 'dense-analysis/ale'
 Plug 'preservim/nerdcommenter'
-Plug 'jiangmiao/auto-pairs'
-
+" Plug 'jiangmiao/auto-pairs'
+Plug 'raimondi/delimitmate'
 
 " Load plugins
 " VIM enhancements
