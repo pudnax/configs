@@ -38,7 +38,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'rust-analyzer/rust-analyzer'
-" Plug 'neoclide/coc-rls'
 
 " Syntactic language support
 Plug 'cespare/vim-toml'
@@ -46,7 +45,7 @@ Plug 'stephpy/vim-yaml'
 Plug 'rust-lang/rust.vim'
 Plug 'rhysd/vim-clang-format'
 Plug 'mhinz/vim-crates'
-"Plug 'fatih/vim-go'
+Plug 'fatih/vim-go'
 Plug 'dag/vim-fish'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
@@ -81,15 +80,6 @@ let g:ale_fixers = {
 \}
 let g:ale_fix_on_save = 1
 let g:rustfmt_autosave = 1
-
-" Syntactic
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
 
 if has('nvim')
     set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
@@ -133,7 +123,6 @@ let base16colorspace=256
 let g:base16_shell_path="~/dev/others/base16/builder/templates/shell/scripts/"
 
 " Lightline
-" let g:lightline = { 'colorscheme': 'wombat' }
 let g:lightline = {
       \ 'component_function': {
       \   'filename': 'LightlineFilename',
