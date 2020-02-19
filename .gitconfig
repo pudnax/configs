@@ -1,6 +1,7 @@
 [user]
 	email = k.a.komissar@gmail.com
 	name = Alex Komissarov
+	signingkey = 180A036CF1AD77DE
 [ui "color"]
 	ui = always
 [color]
