@@ -400,13 +400,13 @@ nnoremap j gj
 nnoremap k gk
 
 " 'Smart' nevigation
-nmap <silent> E <Plug>(coc-diagnostic-prev)
-nmap <silent> W <Plug>(coc-diagnostic-next)
-nmap <silent> <leader>l <Plug>(coc-diagnostic-info)
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+" nmap <silent> E <Plug>(coc-diagnostic-prev)
+" nmap <silent> W <Plug>(coc-diagnostic-next)
+" nmap <silent> <leader>l <Plug>(coc-diagnostic-info)
+" nmap <silent> gd <Plug>(coc-definition)
+" nmap <silent> gy <Plug>(coc-type-definition)
+" nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gr <Plug>(coc-references)
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
@@ -416,9 +416,9 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
-" nmap <silent> F <Plug>(ale_lint)
-" nmap <silent> <C-l> <Plug>(ale_detail)
-" nmap <silent> <C-g> :close<cr>
+nmap <silent> F <Plug>(ale_lint)
+nmap <silent> <C-l> <Plug>(ale_detail)
+nmap <silent> <C-g> :close<cr>
 
 
 " <leader><leader> toggles between buffers

@@ -1,4 +1,0 @@
-{
-  "coc.preferences.formatOnSaveFiletypes": "rust",
-  "rust-analyzer.raLspServerPath": "/home/komm/.cargo/bin/ra_lsp_server"
-}
