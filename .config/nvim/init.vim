@@ -13,6 +13,10 @@ set rtp+=~/dev/others/base16/builder/templates/vim/
 call plug#begin()
 
 Plug 'chriskempson/base16-vim'
+Plug 'dense-analysis/ale'
+Plug 'preservim/nerdcommenter'
+Plug 'jiangmiao/auto-pairs'
+
 
 " Load plugins
 " VIM enhancements
@@ -37,7 +41,6 @@ Plug 'rust-analyzer/rust-analyzer'
 " Plug 'neoclide/coc-rls'
 
 " Syntactic language support
-Plug 'scrooloose/syntastic'
 Plug 'cespare/vim-toml'
 Plug 'stephpy/vim-yaml'
 Plug 'rust-lang/rust.vim'
@@ -50,14 +53,43 @@ Plug 'plasticboy/vim-markdown'
 
 call plug#end()
 
+" Author: Daniel Schemala <istjanichtzufassen@gmail.com>
+" Description: rustc for rust files
+
+
+" rust config
+augroup rust
+    autocmd!
+    autocmd FileType rust compiler rustc
+    autocmd BufWritePost *.rs silent make | silent redraw!
+augroup END
+
+" quickfix config
+augroup quickfix
+    autocmd!
+    autocmd QuickFixCmdPost [^l]* cwindow
+    autocmd VimEnter        *     cwindow
+augroup END
+
+" Ale
+let g:ale_linters = {'rust': ['rustc', 'cargo']}
+let g:ale_rust_cargo_use_check =1
+let g:ale_rust_cargo_check_examples=1
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'rust': ['rustfmt'],
+\}
+let g:ale_fix_on_save = 1
+let g:rustfmt_autosave = 1
+
 " Syntactic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
 
 if has('nvim')
     set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
@@ -185,7 +217,6 @@ let g:go_bin_path = expand("~/dev/go/bin")
 " # Editor settings
 " =============================================================================
 filetype plugin indent on
-set autoindent
 set timeoutlen=300 " http://stackoverflow.com/questions/2158516/delay-before-o-opens-a-new-line
 set encoding=utf-8
 set scrolloff=2
