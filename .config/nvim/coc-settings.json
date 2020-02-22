@@ -1,0 +1,4 @@
+{
+        "coc.preferences.useQuickfixForLocations": "true",
+        "rust-analyzer.raLspServerPath": "/home/komm/.cargo/bin/rust-analyzer"
+}
