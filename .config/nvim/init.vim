@@ -17,6 +17,8 @@ Plug 'ciaranm/securemodelines'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'justinmk/vim-sneak'
 
+Plug 'raimondi/delimitmate'
+
 Plug 'chriskempson/base16-vim'
 
 " GUI enhancements
