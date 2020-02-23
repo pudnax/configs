@@ -1,4 +1,4 @@
-" Space to leader
+"ss Space to leader
 let mapleader = "\<Space>"
 filetype indent on
 set nocompatible
@@ -285,6 +285,8 @@ command! -bang -nargs=* Rg
                         \   <bang>0 ? fzf#vim#with_preview('up:60%')
                         \           : fzf#vim#with_preview('right:50%:hidden', '?'),
                         \   <bang>0)
+
+
 
 function! s:list_cmd()
         let base = fnamemodify(expand('%'), ':h:.:S')
