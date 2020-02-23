@@ -1,6 +1,8 @@
-export EDITOR=/usr/bin/nano
+# export EDITOR=/usr/bin/nano
 alias o=xdg-open
 alias c=cargo
+
+alias tmux="TERM=screen-256color-bce tmux"
 
 alias l=exa
 alias ls=exa
