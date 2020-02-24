@@ -16,6 +16,8 @@ Plug 'ciaranm/securemodelines'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'justinmk/vim-sneak'
 
+Plug 'dense-analysis/ale', { 'for': ['c', 'cpp', 'haskell', 'lua', 'vim', 'rust'] }
+
 Plug 'raimondi/delimitmate'
 
 Plug 'chriskempson/base16-vim'
@@ -172,7 +174,7 @@ filetype plugin indent on
 set autoindent
 set timeoutlen=300 " http://stackoverflow.com/questions/2158516/delay-before-o-opens-a-new-line
 set encoding=utf-8
-set scrolloff=2
+set scrolloff=4
 set noshowmode
 set nowrap
 set nojoinspaces
@@ -408,6 +410,34 @@ autocmd Filetype html,xml,xsl,php source ~/.config/nvim/scripts/closetag.vim
 " # Footer
 " =============================================================================
 
+" Ale
+" configure ALE
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'c': ['clang-format', 'uncrustify'],
+\   'cpp': ['clang-format', 'uncrustify'],
+\   'go': ['gofmt', 'goimports'],
+\   'html': ['tidy'],
+\   'javascript': ['eslint'],
+\   'python': ['add_blank_lines_for_python_control_statements', 'autopep8', 'black', 'isort', 'yapf'],
+\   'rust': ['rustfmt'],
+\   'typescript': ['eslint', 'prettier', 'tslint'],
+\   'typescript.jsx': ['eslint', 'prettier', 'tslint'],
+\}
+let g:ale_linters = {
+\   'html': ['alex', 'htmlhint', 'stylelint', 'tidy', 'writegood'],
+\   'rust': ['cargo', 'rls', 'rustc'],
+\}
+let g:ale_typescript_tslint_config_path = 'tslint.json'
+let g:ale_sign_error = 'E'
+highlight nonascii guibg=Red ctermbg=3
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+let g:ale_rust_cargo_use_check = 1
+let g:ale_rust_cargo_check_tests = 1
+let g:ale_rust_cargo_check_examples = 1
+
+" =============================================================================
 " nvim
 if has('nvim')
 	runtime! plugin/python_setup.vim
@@ -461,6 +491,9 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
+nmap <silent> E <Plug>(coc-diagnostic-prev)
+nmap <silent> W <Plug>(coc-diagnostic-next)
+nmap <silent> <leader>l <Plug>(coc-diagnostic-info)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
