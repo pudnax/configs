@@ -98,6 +98,8 @@ scrolling:
 
 # Font configuration
 font:
+  size: 10.5 
+
   # Normal (roman) font face
   normal:
     # Font family
@@ -106,7 +108,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: "Fira Code"
+    family: "GohuFont Nerd Font" # Fira Code
 
     # The `style` can be specified to pick a specific face.
     #style: Regular
@@ -177,7 +179,7 @@ font:
   #use_thin_strokes: true
 
 # If `true`, bold text is drawn using the bright color variants.
-#draw_bold_text_with_bright_colors: false
+#draw_bold_text_with_bright_colors: true
 
 # Base16 Gruvbox dark, hard 256 - alacritty color config
 # Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
@@ -474,7 +476,9 @@ colors:
 #    escape sequence.
 #
 # - `action`: Execute a predefined action
-#
+#   - DecreaseFontSize
+#   - DecreaseFontSize
+#   - DecreaseFontSize
 #   - Copy
 #   - Paste
 #   - PasteSelection
@@ -576,4 +580,3 @@ key_bindings:
   #- { key: PageDown,  mods: Shift,   action: ScrollPageDown, mode: ~Alt       }
   #- { key: Home,      mods: Shift,   action: ScrollToTop,    mode: ~Alt       }
   #- { key: End,       mods: Shift,   action: ScrollToBottom, mode: ~Alt       }
-
