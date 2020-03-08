@@ -16,6 +16,9 @@ Plug 'ciaranm/securemodelines'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'justinmk/vim-sneak'
 
+" Rust objet notation
+Plug 'ron-rs/ron.vim'
+
 " Plug 'dense-analysis/ale', { 'for': ['c', 'cpp', 'haskell', 'lua', 'vim', 'rust'] }
 
 Plug 'raimondi/delimitmate'
@@ -46,6 +49,14 @@ Plug 'godlygeek/tabular'
 " Plug 'plasticboy/vim-markdown'
 
 call plug#end()
+
+
+" Racer
+set hidden
+let g:racer_cmd = "/home/komk/.cargo/bin/racer"
+let g:racer_experimental_completer = 1
+let g:racer_insert_paren = 1
+
 
 if has('nvim')
     set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
@@ -135,8 +146,6 @@ let g:rustfmt_autosave = 1
 let g:rustfmt_emit_files = 1
 let g:rustfmt_fail_silently = 0
 let g:rust_clip_command = 'xclip -selection clipboard'
-"let g:racer_cmd = "/usr/bin/racer"
-"let g:racer_experimental_completer = 1
 let $RUST_SRC_PATH = systemlist("rustc --print sysroot")[0] . "/lib/rustlib/src/rust/src"
 
 " Completion
