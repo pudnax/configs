@@ -185,7 +185,7 @@ set autoindent
 set encoding=utf-8
 set scrolloff=4
 set noshowmode
-set nowrap
+" set nowrap
 set nojoinspaces
 let g:sneak#s_next = 1
 let g:vim_markdown_new_list_item_indent = 0

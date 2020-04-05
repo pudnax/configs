@@ -1,4 +1,28 @@
 {
-        "coc.preferences.useQuickfixForLocations": "true",
-        "rust-analyzer.raLspServerPath": "/home/komm/.cargo/bin/rust-analyzer"
+     "fortran": {
+       "command": "fortls",
+       "filetypes": ["fortran"],
+       "rootPatterns": [".fortls", ".git/"]
+     },
+      "ccls": {
+       "command": "ccls",
+       "filetypes": ["c", "cpp", "objc", "objcpp"],
+       "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
+       "initializationOptions": {
+          "cache": {
+            "directory": "/tmp/ccls"
+          }
+        }
+    },
+     "rust": {
+      "command": "rust-analyzer",
+      "filetypes": ["rust"],
+      "rootPatterns": ["Cargo.toml"]
+    },
+     "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod"],
+      "disableWorkspaceFolders": true,
+      "filetypes": ["go"]
+    }
 }
