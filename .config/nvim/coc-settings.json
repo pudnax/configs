@@ -1,23 +1,22 @@
 {
+	  "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "c", "cpp", "cuda", "objc", "objcpp", "go", "fortran"],
      "fortran": {
        "command": "fortls",
        "filetypes": ["fortran"],
        "rootPatterns": [".fortls", ".git/"]
      },
-      "ccls": {
-       "command": "ccls",
-       "filetypes": ["c", "cpp", "objc", "objcpp"],
-       "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
-       "initializationOptions": {
-          "cache": {
-            "directory": "/tmp/ccls"
-          }
+     "ccls": {
+      "command": "ccls",
+      "filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
+      "rootPatterns": [".ccls-root", "compile_commands.json"],
+      "initializationOptions": {
+        "cache": {
+          "directory": ".ccls-cache"
+        },
+        "client": {
+          "snippetSupport": true
         }
-    },
-     "rust": {
-      "command": "rust-analyzer",
-      "filetypes": ["rust"],
-      "rootPatterns": ["Cargo.toml"]
+      }
     },
      "golang": {
       "command": "gopls",

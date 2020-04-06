@@ -215,9 +215,9 @@ set wildmode=list:longest
 set wildignore=.hg,.svn,*~,*.png,*.jpg,*.gif,*.settings,Thumbs.db,*.min.js,*.swp,publish/*,intermediate/*,*.o,*.hi,Zend,vendor
 
 " Use wide tabs
-set shiftwidth=8
-set softtabstop=8
-set tabstop=8
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
 set noexpandtab
 
 " Wrapping options
@@ -594,3 +594,14 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR> 
+
+call coc#config('coc.preferences', {
+	\ 'timeout': 1000,
+	\})
+call coc#config('languageserver', {
+	\ 'ccls': {
+	\   "command": "ccls",
+	\   "trace.server": "verbose",
+	\   "filetypes": ["c", "cpp", "objc", "objcpp"]
+	\ }
+	\})
