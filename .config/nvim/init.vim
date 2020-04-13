@@ -19,6 +19,10 @@ Plug 'justinmk/vim-sneak'
 " Rust objet notation
 Plug 'ron-rs/ron.vim'
 
+" Shaders
+Plug 'tikhomirov/vim-glsl'
+Plug 'beyondmarc/hlsl.vim'
+
 " Plug 'dense-analysis/ale', { 'for': ['c', 'cpp', 'haskell', 'lua', 'vim', 'rust'] }
 
 Plug 'raimondi/delimitmate'
@@ -202,8 +206,8 @@ set exrc
 set secure
 
 " Sane splits
-set splitright
 set splitbelow
+set splitright
 
 " Permanent undo
 set undodir=~/.vimdid

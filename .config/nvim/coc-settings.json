@@ -1,5 +1,5 @@
 {
-	  "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "c", "cpp", "cuda", "objc", "objcpp", "go", "fortran"],
+	  "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "c", "cpp", "cuda", "objc", "objcpp", "go", "fortran", "*"],
      "fortran": {
        "command": "fortls",
        "filetypes": ["fortran"],
@@ -23,5 +23,9 @@
       "rootPatterns": ["go.mod"],
       "disableWorkspaceFolders": true,
       "filetypes": ["go"]
+    },
+	 "nim": {
+      "command": "nimlsp",
+      "filetypes": ["nim"]
     }
 }
