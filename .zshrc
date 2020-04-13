@@ -68,8 +68,15 @@ ZSH_THEME="bira"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git
+	tmux
+	ripgrep
+	zsh-autosuggestions
+	zsh-completions
+	zsh-syntax-highlighting
+)
 
+autoload -U compinit && compinit
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -97,46 +104,16 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#
 
-alias scp='noglob scp_wrap'
-function scp_wrap {
-  local -a args
-  local i
-  for i in "$@"; do case $i in
-    (*:*) args+=($i) ;;
-    (*) args+=(${~i}) ;;
-  esac; done
-  command scp "${(@)args}"
-}
-
-source /usr/share/nvm/init-nvm.sh
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"
+source /usr/share/nvm/nvm.sh
+source /usr/share/nvm/bash_completion
+source /usr/share/nvm/install-nvm-exec
 
 source $HOME/.profile
 
-_zoxide_precmd() {
-    zoxide add
-}
+source /home/komm/.config/broot/launcher/bash/br
 
-precmd_functions+=_zoxide_precmd
-
-z() {
-    if [ $# -ne 0 ]; then
-        _Z_RESULT=$(zoxide query "$@")
-        case $_Z_RESULT in
-            "query: "*)
-                cd "${_Z_RESULT:7}"
-                ;;
-            *)
-                echo "${_Z_RESULT}"
-                ;;
-        esac
-    fi
-}
-
-alias zi="z -i"
-
-alias za="zoxide add"
-alias zq="zoxide query"
-alias zr="zoxide remove"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source /usr/share/nvm/init-nvm.sh
