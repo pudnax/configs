@@ -1,31 +1,71 @@
 {
-	  "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "c", "cpp", "cuda", "objc", "objcpp", "go", "fortran", "*"],
-     "fortran": {
-       "command": "fortls",
-       "filetypes": ["fortran"],
-       "rootPatterns": [".fortls", ".git/"]
-     },
-     "ccls": {
-      "command": "ccls",
-      "filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
-      "rootPatterns": [".ccls-root", "compile_commands.json"],
-      "initializationOptions": {
-        "cache": {
-          "directory": ".ccls-cache"
-        },
-        "client": {
-          "snippetSupport": true
-        }
-      }
-    },
-     "golang": {
-      "command": "gopls",
-      "rootPatterns": ["go.mod"],
-      "disableWorkspaceFolders": true,
-      "filetypes": ["go"]
-    },
-	 "nim": {
-      "command": "nimlsp",
-      "filetypes": ["nim"]
-    }
+	"coc.preferences.formatOnSaveFiletypes": [
+		"css",
+		"markdown",
+		"c",
+		"cpp",
+		"cuda",
+		"objc",
+		"objcpp",
+		"go",
+		"fortran",
+		"*"
+	],
+	"fortran": {
+		"command": "fortls",
+		"filetypes": [
+			"fortran"
+		],
+		"rootPatterns": [
+			".fortls",
+			".git/"
+		]
+	},
+	"ccls": {
+		"command": "ccls",
+		"filetypes": [
+			"c",
+			"cpp",
+			"cuda",
+			"objc",
+			"objcpp"
+		],
+		"rootPatterns": [
+			".ccls-root",
+			"compile_commands.json"
+		],
+		"initializationOptions": {
+			"cache": {
+				"directory": ".ccls-cache"
+			},
+			"client": {
+				"snippetSupport": true
+			}
+		}
+	},
+	"golang": {
+		"command": "gopls",
+		"rootPatterns": [
+			"go.mod"
+		],
+		"disableWorkspaceFolders": true,
+		"filetypes": [
+			"go"
+		]
+	},
+	"nim": {
+		"command": "nimlsp",
+		"filetypes": [
+			"nim"
+		]
+	},
+	"rust": {
+		"command": "rust-analyzer",
+		"filetypes": [
+			"rust"
+		],
+		"rootPatterns": [
+			"Cargo.toml"
+		]
+	}
 }
