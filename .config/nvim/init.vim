@@ -56,10 +56,10 @@ call plug#end()
 
 
 " Racer
-set hidden
-let g:racer_cmd = "/home/komk/.cargo/bin/racer"
-let g:racer_experimental_completer = 1
-let g:racer_insert_paren = 1
+" set hidden
+" let g:racer_cmd = "/home/komk/.cargo/bin/racer"
+" let g:racer_experimental_completer = 1
+" let g:racer_insert_paren = 1
 
 
 if has('nvim')
@@ -105,14 +105,20 @@ let g:base16_shell_path="~/dev/others/base16/builder/templates/shell/scripts/"
 
 " Lightline
 " let g:lightline = { 'colorscheme': 'wombat' }
-let g:lightline = {
-      \ 'component_function': {
-      \   'filename': 'LightlineFilename',
-      \ },
-\ }
 function! LightlineFilename()
   return expand('%:t') !=# '' ? @% : '[No Name]'
 endfunction
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'cocstatus': 'coc#status',
+      \   'currentfunction': 'CocCurrentFunction'
+      \ },
+      \ }
 
 " from http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
 if executable('ag')
@@ -598,6 +604,9 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR> 
+" Coc explorer
+nmap <space>r :CocCommand explorer<CR>
+
 
 call coc#config('coc.preferences', {
 	\ 'timeout': 1000,

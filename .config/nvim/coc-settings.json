@@ -1,71 +1,67 @@
 {
-	"coc.preferences.formatOnSaveFiletypes": [
-		"css",
-		"markdown",
-		"c",
-		"cpp",
-		"cuda",
-		"objc",
-		"objcpp",
-		"go",
-		"fortran",
-		"*"
-	],
-	"fortran": {
-		"command": "fortls",
-		"filetypes": [
-			"fortran"
-		],
-		"rootPatterns": [
-			".fortls",
-			".git/"
-		]
-	},
-	"ccls": {
-		"command": "ccls",
-		"filetypes": [
-			"c",
-			"cpp",
-			"cuda",
-			"objc",
-			"objcpp"
-		],
-		"rootPatterns": [
-			".ccls-root",
-			"compile_commands.json"
-		],
-		"initializationOptions": {
-			"cache": {
-				"directory": ".ccls-cache"
-			},
-			"client": {
-				"snippetSupport": true
+	"diagnostic.joinMessageLines": true,
+	"diagnostic.checkCurrentLine": true,
+	"languageserver": {
+		"haskell": {
+			"command": "hie-wrapper",
+			"args": [
+				"--lsp"
+			],
+			"rootPatterns": [
+				"stack.yaml",
+				"cabal.config",
+				"package.yaml"
+			],
+			"filetypes": [
+				"hs",
+				"lhs",
+				"haskell"
+			],
+			"initializationOptions": {
+				"languageServerHaskell": {
+					"hlintOn": true
+				}
 			}
+		},
+		"fortran": {
+			"command": "fortls",
+			"filetypes": [
+				"fortran"
+			],
+			"rootPatterns": [
+				".fortls",
+				".git/"
+			]
+		},
+		"sql": {
+			"command": "sql-language-server",
+			"args": [
+				"up",
+				"--method",
+				"stdio"
+			],
+			"filetypes": [
+				"sql",
+				"mysql"
+			]
+		},
+		"nim": {
+			"command": "nimlsp",
+			"filetypes": [
+				"nim"
+			]
+		},
+		"bash": {
+			"command": "bash-language-server",
+			"args": [
+				"start"
+			],
+			"filetypes": [
+				"sh"
+			],
+			"ignoredRootPaths": [
+				"~"
+			]
 		}
-	},
-	"golang": {
-		"command": "gopls",
-		"rootPatterns": [
-			"go.mod"
-		],
-		"disableWorkspaceFolders": true,
-		"filetypes": [
-			"go"
-		]
-	},
-	"nim": {
-		"command": "nimlsp",
-		"filetypes": [
-			"nim"
-		]
-	},
-	"rust": {
-		"command": "rust-analyzer",
-		"filetypes": [
-			"rust"
-		],
-		"rootPatterns": [
-			"Cargo.toml"
-		]
 	}
 }

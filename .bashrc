@@ -147,3 +147,5 @@ source /usr/share/nvm/install-nvm-exec
 source /home/komm/.config/broot/launcher/bash/br
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+source /home/koms/.config/broot/launcher/bash/br
