@@ -11,6 +11,10 @@ set rtp+=~/dev/others/base16/builder/templates/vim/
 call plug#begin()
 
 " Load plugins
+
+" Tabs or 4 space highlighting
+Plug 'nathanaelkane/vim-indent-guides'
+
 " VIM enhancements
 Plug 'ciaranm/securemodelines'
 Plug 'editorconfig/editorconfig-vim'
@@ -60,6 +64,15 @@ call plug#end()
 " let g:racer_cmd = "/home/komk/.cargo/bin/racer"
 " let g:racer_experimental_completer = 1
 " let g:racer_insert_paren = 1
+
+" indent-guides
+" let g:indent_guides_auto_colors = 1
+" hi IndentGuidesOdd  guibg=#3B3B3B ctermbg=235
+" hi IndentGuidesEven guibg=#343434 ctermbg=236
+let g:indent_guides_space_guides = 1
+let g:indent_guides_enable_on_vim_startup = 1
+"hi IndentGuidesOdd  ctermbg=black
+"hi IndentGuidesEven ctermbg=darkgrey
 
 
 if has('nvim')
