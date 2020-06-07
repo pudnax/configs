@@ -29,7 +29,7 @@ Plug 'beyondmarc/hlsl.vim'
 
 " Plug 'dense-analysis/ale', { 'for': ['c', 'cpp', 'haskell', 'lua', 'vim', 'rust'] }
 
-Plug 'raimondi/delimitmate'
+" Plug 'raimondi/delimitmate'
 
 Plug 'chriskempson/base16-vim'
 
@@ -50,30 +50,13 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'cespare/vim-toml'
 Plug 'stephpy/vim-yaml'
 Plug 'rust-lang/rust.vim'
-Plug 'rhysd/vim-clang-format'
+" Plug 'rhysd/vim-clang-format'
 Plug 'fatih/vim-go'
 Plug 'dag/vim-fish'
 Plug 'godlygeek/tabular'
 " Plug 'plasticboy/vim-markdown'
 
 call plug#end()
-
-
-" Racer
-" set hidden
-" let g:racer_cmd = "/home/komk/.cargo/bin/racer"
-" let g:racer_experimental_completer = 1
-" let g:racer_insert_paren = 1
-
-" indent-guides
-" let g:indent_guides_auto_colors = 1
-" hi IndentGuidesOdd  guibg=#3B3B3B ctermbg=235
-" hi IndentGuidesEven guibg=#343434 ctermbg=236
-let g:indent_guides_space_guides = 1
-let g:indent_guides_enable_on_vim_startup = 1
-"hi IndentGuidesOdd  ctermbg=black
-"hi IndentGuidesEven ctermbg=darkgrey
-
 
 if has('nvim')
     set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
@@ -441,37 +424,9 @@ autocmd BufRead *.xlsx.axlsx set filetype=ruby
 " Script plugins
 autocmd Filetype html,xml,xsl,php source ~/.config/nvim/scripts/closetag.vim
 
+"
 " =============================================================================
-" # Footer
-" =============================================================================
-
-" Ale
-" configure ALE
-" let g:ale_fixers = {
-" \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-" \   'c': ['clang-format', 'uncrustify'],
-" \   'cpp': ['clang-format', 'uncrustify'],
-" \   'go': ['gofmt', 'goimports'],
-" \   'html': ['tidy'],
-" \   'javascript': ['eslint'],
-" \   'python': ['add_blank_lines_for_python_control_statements', 'autopep8', 'black', 'isort', 'yapf'],
-" \   'rust': ['rustfmt'],
-" \   'typescript': ['eslint', 'prettier', 'tslint'],
-" \   'typescript.jsx': ['eslint', 'prettier', 'tslint'],
-" \}
-" let g:ale_linters = {
-" \   'html': ['alex', 'htmlhint', 'stylelint', 'tidy', 'writegood'],
-" \   'rust': ['cargo', 'rls', 'rustc'],
-" \}
-" let g:ale_typescript_tslint_config_path = 'tslint.json'
-" let g:ale_sign_error = 'E'
-" highlight nonascii guibg=Red ctermbg=3
-" let g:ale_set_loclist = 0
-" let g:ale_set_quickfix = 1
-" let g:ale_rust_cargo_use_check = 1
-" let g:ale_rust_cargo_check_tests = 1
-" let g:ale_rust_cargo_check_examples = 1
-
+" COC Settings
 " =============================================================================
 " nvim
 if has('nvim')
@@ -621,13 +576,3 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 nmap <space>r :CocCommand explorer<CR>
 
 
-call coc#config('coc.preferences', {
-	\ 'timeout': 1000,
-	\})
-call coc#config('languageserver', {
-	\ 'ccls': {
-	\   "command": "ccls",
-	\   "trace.server": "verbose",
-	\   "filetypes": ["c", "cpp", "objc", "objcpp"]
-	\ }
-	\})
