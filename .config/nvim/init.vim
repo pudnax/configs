@@ -11,6 +11,9 @@ set rtp+=~/dev/others/base16/builder/templates/vim/
 call plug#begin()
 
 " Load plugins
+" 
+
+Plug 'rhysd/clever-f.vim'
 
 " Tabs or 4 space highlighting
 Plug 'nathanaelkane/vim-indent-guides'
@@ -63,6 +66,9 @@ if has('nvim')
     set inccommand=nosplit
     noremap <C-q> :confirm qall<CR>
 end
+
+" Sneak, File moving and s remap
+let g:sneak#label = 1
 
 " deal with colors
 if !has('gui_running')
