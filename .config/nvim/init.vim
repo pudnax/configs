@@ -13,6 +13,9 @@ call plug#begin()
 " Load plugins
 " 
 
+" Todo plugin as .org files
+Plug 'jceb/vim-orgmode'
+
 Plug 'rhysd/clever-f.vim'
 
 " Tabs or 4 space highlighting
@@ -69,6 +72,9 @@ end
 
 " Sneak, File moving and s remap
 let g:sneak#label = 1
+
+" enable Normal mode keys in ru layout
+set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 
 " deal with colors
 if !has('gui_running')
