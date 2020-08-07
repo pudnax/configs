@@ -11,7 +11,10 @@ set rtp+=~/dev/others/base16/builder/templates/vim/
 call plug#begin()
 
 " Load plugins
-" 
+"
+" Plug 'sheerun/vim-polyglot'
+Plug 'majutsushi/tagbar'
+Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 " Todo plugin as .org files
 Plug 'jceb/vim-orgmode'
@@ -56,6 +59,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'cespare/vim-toml'
 Plug 'stephpy/vim-yaml'
 Plug 'rust-lang/rust.vim'
+" Plug 'octol/vim-cpp-enhanced-highlight'
 " Plug 'rhysd/vim-clang-format'
 Plug 'fatih/vim-go'
 Plug 'dag/vim-fish'
@@ -76,6 +80,18 @@ let g:sneak#label = 1
 " enable Normal mode keys in ru layout
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 
+" indent-guides
+"let g:indent_guides_auto_colors = 1
+hi IndentGuidesOdd  guibg=#3B3B3B ctermbg=235
+hi IndentGuidesEven guibg=#343434 ctermbg=236
+let g:indent_guides_space_guides = 1
+let g:indent_guides_enable_on_vim_startup = 1
+"hi IndentGuidesOdd  ctermbg=black
+"hi IndentGuidesEven ctermbg=darkgrey
+
+" Tagbar
+nmap <F8> :TagbarToggle<CR>
+
 " deal with colors
 if !has('gui_running')
   set t_Co=256
@@ -92,6 +108,19 @@ hi Normal ctermbg=NONE
 " Get syntax
 syntax on
 
+" Highlight extra whitespaces at the end
+highlight ExtraWhitespace ctermbg=red guibg=red
+au BufNew,BufEnter,BufWinEnter,WinEnter,BufNew * match ExtraWhitespace /\s\+$/
+
+" Insert gates in header files
+function! s:insert_gates()
+  let gatename = substitute(toupper(expand("%:t")), "\\.", "_", "g")
+  execute "normal! i#ifndef " . gatename
+  execute "normal! o#define " . gatename . " "
+  execute "normal! Go#endif /* " . gatename . " */"
+  normal! kk
+endfunction
+autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
 
 " Plugin settings
 let g:secure_modelines_allowed_items = [
