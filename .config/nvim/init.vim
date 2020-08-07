@@ -20,7 +20,8 @@ Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'jceb/vim-orgmode'
 
 Plug 'rhysd/clever-f.vim'
-
+Plug 'easymotion/vim-easymotion'
+Plug 'tomtom/tcomment_vim'
 " Tabs or 4 space highlighting
 Plug 'nathanaelkane/vim-indent-guides'
 
