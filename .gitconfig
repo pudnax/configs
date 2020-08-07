@@ -7,6 +7,7 @@
 [color]
 	ui = true
 [alias]
+    tree = log --graph --decorate --pretty=oneline --abbrev-commit
 	c = commit
 	s = status
 	st = status
