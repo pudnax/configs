@@ -3,6 +3,8 @@ alias c=cargo
 
 alias tmux="TERM=screen-256color-bce tmux"
 
+export EDITOR="vim -i"
+
 alias l=exa
 alias ll="exa -l"
 alias lll="exa -la"
