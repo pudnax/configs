@@ -64,7 +64,13 @@ Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go'
 Plug 'dag/vim-fish'
 Plug 'godlygeek/tabular'
-" Plug 'plasticboy/vim-markdown'
+Plug 'plasticboy/vim-markdown'
+
+" Git
+Plug 'tpope/vim-fugitive'
+
+" Multi cursor
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 call plug#end()
 
