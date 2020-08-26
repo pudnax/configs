@@ -36,6 +36,9 @@ Plug 'ron-rs/ron.vim'
 Plug 'tikhomirov/vim-glsl'
 Plug 'beyondmarc/hlsl.vim'
 
+" Trailing whitespaces and :FixWhitespace
+Plug 'bronson/vim-trailing-whitespace'
+
 " Plug 'dense-analysis/ale', { 'for': ['c', 'cpp', 'haskell', 'lua', 'vim', 'rust'] }
 
 " Plug 'raimondi/delimitmate'
@@ -113,10 +116,6 @@ colorscheme base16-gruvbox-dark-hard
 hi Normal ctermbg=NONE
 " Get syntax
 syntax on
-
-" Highlight extra whitespaces at the end
-highlight ExtraWhitespace ctermbg=red guibg=red
-au BufNew,BufEnter,BufWinEnter,WinEnter,BufNew * match ExtraWhitespace /\s\+$/
 
 " Insert gates in header files
 function! s:insert_gates()
@@ -618,7 +617,7 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR> 
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " Coc explorer
 nmap <space>r :CocCommand explorer<CR>
 
