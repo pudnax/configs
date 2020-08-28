@@ -1,4 +1,6 @@
 {
+	"rust-analyzer.checkOnSave.command": "clippy",
+	"clangd.semanticHighlighting": true,
 	"diagnostic.joinMessageLines": true,
 	"diagnostic.checkCurrentLine": true,
 	"languageserver": {
@@ -63,5 +65,6 @@
 				"~"
 			]
 		}
-	}
+  },
+  "git.enableGutters": true
 }
