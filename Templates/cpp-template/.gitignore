@@ -1,0 +1,5 @@
+.clang-format
+build
+build.sh
+compile_commands.json
+bin
