@@ -22,6 +22,7 @@ export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/.gem/ruby/2.7.0/bin:$PATH"
 export PATH="$HOME/.nimble/bin:$PATH"
 export PATH="$HOME/.dotnet/tools:$PATH"
+export PATH="$HOME/bins:$PATH"
 
 export GPG_TTY=$(tty)
 
