@@ -54,6 +54,7 @@ Plug 'andymass/vim-matchup'
 Plug 'airblade/vim-rooter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'cloudhead/neovim-fuzzy'
 
 " Semantic language support
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -277,6 +278,8 @@ nnoremap <silent> N Nzz
 nnoremap <silent> * *zz
 nnoremap <silent> # #zz
 nnoremap <silent> g* g*zz
+
+nnoremap <C-l> :FuzzyOpen<CR>
 
 " Very magic by default
 nnoremap ? ?\v
