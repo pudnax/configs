@@ -16,11 +16,13 @@ call plug#begin()
 Plug 'majutsushi/tagbar'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 
+Plug 'rhysd/committia.vim'
+
 " Todo plugin as .org files
 Plug 'jceb/vim-orgmode'
 
 Plug 'rhysd/clever-f.vim'
-Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-commentary'
 " Tabs or 4 space highlighting
 Plug 'nathanaelkane/vim-indent-guides'
 
@@ -86,6 +88,23 @@ end
 
 " Sneak, File moving and s remap
 let g:sneak#label = 1
+
+let g:committia_hooks = {}
+function! g:committia_hooks.edit_open(info)
+    " Additional settings
+    setlocal spell
+
+    " If no commit message, start with insert mode
+    if a:info.vcs ==# 'git' && getline(1) ==# ''
+        startinsert
+    endif
+
+    " Scroll the diff window from insert mode
+    " Map <C-n> and <C-p>
+    imap <buffer><C-n> <Plug>(committia-scroll-diff-down-half)
+    imap <buffer><C-p> <Plug>(committia-scroll-diff-up-half)
+endfunction
+
 
 " enable Normal mode keys in ru layout
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
@@ -235,7 +254,9 @@ set printencoding=utf-8
 set printoptions=paper:letter
 " Always draw sign column. Prevent buffer moving when adding/deleting sign.
 set signcolumn=yes
-
+" Lets us yank in vim and then paste to other programs
+set clipboard+=unnamedplus
+" set linebreak
 " Settings needed for .lvimrc
 set exrc
 set secure
