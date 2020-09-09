@@ -98,7 +98,7 @@ scrolling:
 
 # Font configuration
 font:
-  size: 10.5 
+  size: 8.5
 
   # Normal (roman) font face
   normal:
@@ -108,8 +108,30 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: "GohuFont Powerline" # Fira Code
-
+    # family: "Dina"
+    # family: "ProggyCleanTTSZ Nerd Font Mono"
+    # family: "ProggyCleanTTCE Nerd Font Mono"
+    # family: "ProggyCleanTT Nerd Font Mono"
+    # family: "TSCu_Comic"
+    # family: "TSCu_Times"
+     family: "GohuFont Powerline" # Fira Code
+    # family: "Monofuritalic Nerd Font Mono"
+    # family: "Antique"
+    # family: "Artist Alt"
+    # family: "Artsie"
+    # family: "LucidaTerminal"
+    # family: "Terminal"
+    # family: "Source Code Pro"
+    # family: "xos4 Terminus"
+    # family: "Hack"
+    # family: "Fira Code"
+    # family: "Hermit"
+    # family: "Zin"
+    # family: "TerminessTTF Nerd Font Mono"
+    # family: "Misc Tamsyn"
+    #
+    # ~
+    #
     # The `style` can be specified to pick a specific face.
     #style: Regular
 
