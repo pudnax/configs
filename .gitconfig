@@ -6,9 +6,13 @@
 	ui = always
 [color]
 	ui = true
+	diff = auto
+	branch = auto
+	status = auto
 [alias]
     tree = log --graph --decorate --pretty=oneline --abbrev-commit
 	c = commit
+	a = add
 	s = status
 	st = status
 	lg = log --oneline
