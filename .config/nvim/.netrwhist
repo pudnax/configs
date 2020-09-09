@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/home/komm/Work/CPP/dlaf'
+let g:netrw_dirhist_6='/home/komm/Work/Rust/pngcrypt-rs'
+let g:netrw_dirhist_5='/home/komm/Work/CPP/dlaf'
+let g:netrw_dirhist_4='/home/koms/.config/nvim'
+let g:netrw_dirhist_3='/home/komm/Work/CPP/dlaf'
+let g:netrw_dirhist_2='/home/koms/.config/nvim'
+let g:netrw_dirhist_1='/home/komm/Work/CPP/dlaf'
+let g:netrw_dirhist_0='/home/komm/Work/Rust/ctrlc'
+let g:netrw_dirhist_9='/home/komm/Work/Rust/pngcrypt-rs'
+let g:netrw_dirhist_8='/home/komm/Work/Rust/pngcrypt-rs/src'
