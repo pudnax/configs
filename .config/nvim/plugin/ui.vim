@@ -61,9 +61,6 @@ let g:indent_guides_enable_on_vim_startup = 1
 "hi IndentGuidesOdd  ctermbg=black
 "hi IndentGuidesEven ctermbg=darkgrey
 
-" Tagbar
-nmap <F8> :TagbarToggle<CR>
-
 " deal with colors
 if !has('gui_running')
   set t_Co=256

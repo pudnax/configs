@@ -87,9 +87,6 @@ set nocompatible
 " enable Normal mode keys in ru layout
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 
-" Tagbar
-nmap <F8> :TagbarToggle<CR>
-
 " =============================================================================
 " # Autocommands
 " =============================================================================
