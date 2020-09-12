@@ -91,9 +91,6 @@ nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 " Move by line
 nnoremap j gj
 nnoremap k gk
-" nmap <silent> F <Plug>(ale_lint)
-" nmap <silent> <C-l> <Plug>(ale_detail)
-" nmap <silent> <C-g> :close<cr>
 
 nnoremap ,b :Buffers<CR>
 
@@ -128,3 +125,8 @@ map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
+
+" Clamp curled braces down on <enter>
+inoremap {<cr> {<cr>}<c-o><s-o>
+
+
