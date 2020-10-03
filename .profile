@@ -38,6 +38,8 @@ export PATH="$HOME/.nimble/bin:$PATH"
 export PATH="$HOME/.dotnet/tools:$PATH"
 export PATH="$HOME/bins:$PATH"
 
+export GITHUB_PERSONAL_TOKEN=0bece0968c950bf04096cb1a2074eb4ca39af807
+
 export GPG_TTY=$(tty)
 
 export NVM_DIR="$HOME/.nvm"
