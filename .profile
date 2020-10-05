@@ -12,7 +12,6 @@ alias lll="exa -la"
 alias lt="exa -aT"
 
 alias psr=procs
-
 alias dur=dust
 
 alias nv=nvim
