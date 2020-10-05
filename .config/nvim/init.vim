@@ -4,8 +4,6 @@ call plug#begin()
 Plug 'rust-lang/rust.vim'
 Plug 'prettier/vim-prettier'
 Plug 'nvim-treesitter/nvim-treesitter'
-" " Allows for easily editing paired characters (e.g. ')
-Plug 'tpope/vim-surround'
 
 Plug 'neomake/neomake'
 Plug 'tpope/vim-dispatch'
@@ -18,20 +16,19 @@ Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline' 			    " statusline
 Plug 'vim-airline/vim-airline-themes'
 
+Plug 'vim-utils/vim-man'
+Plug 'mbbill/undotree'
+
+Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git', {'autoload':{'filetypes':['gitcommit','gitconfig', 'gitrebase', 'gitsendmail']}}
-Plug 'kdheepak/lazygit.nvim'
 
 Plug 'mattn/emmet-vim', {'autoload':{'filetypes':['html','css','sass','scss','less']}} " HTML completion
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
 
 Plug 'godlygeek/tabular'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 
-Plug 'rhysd/committia.vim'
-" Todo plugin as .org files
-Plug 'jceb/vim-orgmode'
+Plug 'vuciv/vim-bujo'
 
 Plug 'rhysd/clever-f.vim'
 Plug 'tpope/vim-commentary'
@@ -57,10 +54,9 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'andymass/vim-matchup'
 
 " Fuzzy finder
-Plug 'airblade/vim-rooter'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'cloudhead/neovim-fuzzy'
+Plug 'stsewd/fzf-checkout.vim'
 
 Plug 'plasticboy/vim-markdown'
 " Syntactic language support

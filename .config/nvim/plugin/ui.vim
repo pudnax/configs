@@ -3,6 +3,10 @@
 " =============================================================================
 let base16colorspace=256  " Access colors present in 256 colorspace, used with base16-shell
 set termguicolors
+if exists('+termguicolors')
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
 "colorscheme ir_black
 colorscheme base16-default-dark
 set background=dark
@@ -51,7 +55,6 @@ set colorcolumn=+1              " Column width indicator
 set nosmartindent               " do not auto ident
 set cindent
 
-
 " indent-guides
 "let g:indent_guides_auto_colors = 1
 hi IndentGuidesOdd  guibg=#3B3B3B ctermbg=235
@@ -69,8 +72,6 @@ if (match($TERM, "-256color") != -1) && (match($TERM, "screen-256color") == -1)
   " screen does not (yet) support truecolor
   set termguicolors
 endif
-" Colors
-set termguicolors
 " colorscheme base16-gruvbox-dark-hard
 hi Normal ctermbg=NONE
 

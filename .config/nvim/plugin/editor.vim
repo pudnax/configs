@@ -63,16 +63,7 @@ nnoremap <silent> * *zz
 nnoremap <silent> # #zz
 nnoremap <silent> g* g*zz
 
-nnoremap <C-l> :FuzzyOpen<CR>
-
 " Very magic by default
 nnoremap ? ?\v
 nnoremap / /\v
 cnoremap %s/ %sm/
-
-" Open hotkeys
-map <C-p> :Files<CR>
-nmap <leader>; :Buffers<CR>
-
-" Quick-save
-nmap <leader>w :w<CR>
