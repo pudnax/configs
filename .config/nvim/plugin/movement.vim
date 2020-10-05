@@ -127,7 +127,7 @@ inoremap {<cr> {<cr>}<c-o><s-o>
 
 nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 nnoremap <leader>u :UndotreeShow<CR>
-nnoremap <leader>bs /<C-R>=escape(expand("<cWORD>"), "/")<CR><CR>
+nnoremap <leader>pf /<C-R>=escape(expand("<cWORD>"), "/")<CR><CR>
 nnoremap <leader>pw :CocSearch <C-R>=expand("<cword>")<CR><CR>
 
 " Open hotkeys
@@ -143,3 +143,6 @@ nmap <leader>; :Buffers<CR>
 
 " Quick-save
 nmap <leader>w :w<CR>
+
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
