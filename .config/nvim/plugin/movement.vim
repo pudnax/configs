@@ -38,9 +38,9 @@ vnoremap <C-h> :nohlsearch<cr>
 nnoremap <C-h> :nohlsearch<cr>
 
 " Suspend with Ctrl+f
-inoremap <C-f> :sus<cr>
-vnoremap <C-f> :sus<cr>
-nnoremap <C-f> :sus<cr>
+" inoremap <C-f> :sus<cr>
+" vnoremap <C-f> :sus<cr>
+" nnoremap <C-f> :sus<cr>
 
 " Jump to start and end of line using the home row keys
 map H ^
@@ -130,12 +130,14 @@ nnoremap <leader>u :UndotreeShow<CR>
 nnoremap <leader>pf /<C-R>=escape(expand("<cWORD>"), "/")<CR><CR>
 nnoremap <leader>pw :CocSearch <C-R>=expand("<cword>")<CR><CR>
 
-" Open hotkeys
-map <C-p> :Files<CR>
-nmap <leader>; :Buffers<CR>
+" Ctrl-c: Copy (works with system clipboard due to clipboard setting)
+vnoremap <c-c> y`]
 
-" Quick-save
-nmap <leader>w :w<CR>
+" Ctrl-r: Easier search and replace
+vnoremap <c-r> "hy:%s/<c-r>h//gc<left><left><left>
+
+" Ctrl-s: Easier substitue
+noremap <c-s> :s/\%V//g<left><left><left>
 
 " Open hotkeys
 map <C-p> :Files<CR>

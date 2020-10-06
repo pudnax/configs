@@ -1,17 +1,6 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Shortcuts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Ctrl-c: Copy (works with system clipboard due to clipboard setting)
-vnoremap <c-c> y`]
-
-" Ctrl-r: Easier search and replace
-vnoremap <c-r> "hy:%s/<c-r>h//gc<left><left><left>
-
-" Ctrl-s: Easier substitue
-vnoremap <c-s> :s/\%V//g<left><left><left>
-
-" Ctrl-f: Find with MultipleCursors
-vnoremap <c-f> :MultipleCursorsFind
 
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
 let $FZF_DEFAULT_OPTS='--reverse'
