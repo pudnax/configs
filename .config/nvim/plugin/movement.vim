@@ -122,6 +122,11 @@ map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
 
+map <C-t>l :tabr<cr>
+map <C-t>h :tabl<cr>
+map <C-t>j :tabp<cr>
+map <C-t>k :tabn<cr>
+
 " Clamp curled braces down on <enter>
 inoremap {<cr> {<cr>}<c-o><s-o>
 
