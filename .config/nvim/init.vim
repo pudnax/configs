@@ -1,10 +1,17 @@
 let mapleader = "\<Space>"
 
-call plug#begin()
-Plug 'rust-lang/rust.vim'
-Plug 'prettier/vim-prettier'
-Plug 'nvim-treesitter/nvim-treesitter'
+let plug_install = 0
+let autoload_plug_path = stdpath('config') . '/autoload/plug.vim'
+if !filereadable(autoload_plug_path)
+    silent exe '!curl -fL --create-dirs -o ' . autoload_plug_path . 
+        \ ' https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+    execute 'source ' . fnameescape(autoload_plug_path)
+    let plug_install = 1
+endif
+unlet autoload_plug_path
 
+call plug#begin()
+" Plug 'rust-lang/rust.vim'
 Plug 'neomake/neomake'
 Plug 'tpope/vim-dispatch'
 
@@ -16,7 +23,6 @@ Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline' 			    " statusline
 Plug 'vim-airline/vim-airline-themes'
 
-Plug 'vim-utils/vim-man'
 Plug 'mbbill/undotree'
 
 Plug 'sheerun/vim-polyglot'
@@ -25,7 +31,6 @@ Plug 'tpope/vim-git', {'autoload':{'filetypes':['gitcommit','gitconfig', 'gitreb
 
 Plug 'mattn/emmet-vim', {'autoload':{'filetypes':['html','css','sass','scss','less']}} " HTML completion
 
-Plug 'godlygeek/tabular'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 Plug 'vuciv/vim-bujo'
@@ -35,9 +40,6 @@ Plug 'tpope/vim-commentary'
 " Tabs or 4 space highlighting
 Plug 'nathanaelkane/vim-indent-guides'
 
-" VIM enhancements
-Plug 'ciaranm/securemodelines'
-Plug 'editorconfig/editorconfig-vim'
 Plug 'justinmk/vim-sneak'
 
 " Rust objet notation
@@ -51,7 +53,6 @@ Plug 'beyondmarc/hlsl.vim'
 Plug 'bronson/vim-trailing-whitespace'
 
 Plug 'machakann/vim-highlightedyank'
-Plug 'andymass/vim-matchup'
 
 " Fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -72,6 +73,11 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
+
+if plug_install
+    PlugInstall --sync
+endif
+unlet plug_install
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " GENERAL SETTINGS

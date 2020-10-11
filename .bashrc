@@ -138,6 +138,8 @@ ex ()
   fi
 }
 
+source $HOME/.profile
+
 source /home/komm/.config/broot/launcher/bash/br
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
