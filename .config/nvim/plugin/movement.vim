@@ -144,6 +144,8 @@ vnoremap <c-r> "hy:%s/<c-r>h//gc<left><left><left>
 " Ctrl-s: Easier substitue
 noremap <c-s> :s/\%V//g<left><left><left>
 
+" Ctrl-f: Find with MultipleCursors
+" vnoremap <c-f> :MultipleCursorsFind
 " Open hotkeys
 map <C-p> :Files<CR>
 nmap <leader>; :Buffers<CR>
