@@ -1,5 +1,6 @@
 alias o=xdg-open
 alias c=cargo
+alias ccw='cargo check 2>&1 | rg -i --multiline "(^error.*\n.*)|(aborting)|(warnings)"'
 
 alias tmux="TERM=screen-256color-bce tmux"
 
@@ -12,6 +13,7 @@ alias lll="exa -la"
 alias lt="exa -aT"
 
 alias psr=procs
+
 alias dur=dust
 
 alias nv=nvim
@@ -76,3 +78,5 @@ ex ()
     echo "'$1' is not a valid file"
   fi
 }
+
+eval "$(zoxide init zsh)"
