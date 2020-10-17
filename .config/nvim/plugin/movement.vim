@@ -135,6 +135,8 @@ nnoremap <leader>u :UndotreeShow<CR>
 nnoremap <leader>pf /<C-R>=escape(expand("<cWORD>"), "/")<CR><CR>
 nnoremap <leader>pw :CocSearch <C-R>=expand("<cword>")<CR><CR>
 
+map Q <Nop>
+
 " Ctrl-c: Copy (works with system clipboard due to clipboard setting)
 vnoremap <c-c> y`]
 
