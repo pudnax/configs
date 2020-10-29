@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/koms/.oh-my-zsh"
+export ZSH="/home/i3pud/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -109,6 +109,8 @@ source $ZSH/oh-my-zsh.sh
 
 source $HOME/.profile
 
-source /home/koms/.config/broot/launcher/bash/br
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+source /home/pudi3/.config/broot/launcher/bash/br
+
+eval "$(zoxide init zsh)"
