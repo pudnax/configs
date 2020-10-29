@@ -67,7 +67,7 @@ Plug 'stephpy/vim-yaml'
 " Multi cursor
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Semantic language support
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
