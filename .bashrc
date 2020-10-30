@@ -138,11 +138,9 @@ ex ()
   fi
 }
 
-source /home/komm/.config/broot/launcher/bash/br
+source ~/.profile
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-source /home/koms/.config/broot/launcher/bash/br
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
