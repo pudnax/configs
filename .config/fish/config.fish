@@ -1,3 +1,9 @@
+abbr -a g git
+abbr -a gc 'git checkout'
+abbr -a ga 'git add -p'
+abbr -a vimdiff 'nvim -d'
+abbr -a ct 'cargo t'
+
 alias o=xdg-open
 alias c=cargo
 alias ccw='cargo check 2>&1 | rg -i --multiline "(^error.*\n.*)|(aborting)|(warnings)"'
@@ -48,6 +54,8 @@ export EDITOR=/usr/bin/vim
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 # fix "xdg-open fork-bomb" export your preferred browser from here
 export BROWSER=/usr/bin/firefox
+
+set fish_greeting
 
 function _z_cd
     cd $argv
@@ -117,38 +125,38 @@ set -g fish_prompt_pwd_dir_length 3
 
 # For RLS
 # https://github.com/fish-shell/fish-shell/issues/2456
-setenv LD_LIBRARY_PATH (rustc +nightly --print sysroot)"/lib:$LD_LIBRARY_PATH"
-setenv RUST_SRC_PATH (rustc --print sysroot)"/lib/rustlib/src/rust/src"
+# setenv LD_LIBRARY_PATH (rustc +nightly --print sysroot)"/lib:$LD_LIBRARY_PATH"
+# setenv RUST_SRC_PATH (rustc --print sysroot)"/lib/rustlib/src/rust/src"
 
 setenv FZF_DEFAULT_COMMAND 'fd --type file --follow'
 setenv FZF_CTRL_T_COMMAND 'fd --type file --follow'
 setenv FZF_DEFAULT_OPTS '--height 20%'
 
 function ex --description "Universal archive extractor script"
-	for file in $argv
-		switch $file
-			case '*.tar.bz2'
-				tar xjf $file
-			case '*.tar.gz'
-				tar xzf $file
-			case '*bz2'
-				bunzip2  $file
-			case '*.rar'
-				unrar x  $file
-			case '*.tar'
-				tar xf  $file
-			case '*.tbz2'
-				tar xjf $file
-			case '*.tgz'
-				tar xzf $file
-			case '*.zip'
-				unzip  $file
-			case '*.Z'
-				uncompress  $file
-			case '*.7z'
-				7z x  $file
-			case '*'
-				echo "$file cannot be extracted via ex()"
-		end
-	end
+    for file in $argv
+            switch $file
+                case '*.tar.bz2'
+                    tar xjf $file
+                case '*.tar.gz'
+                    tar xzf $file
+                case '*bz2'
+                    bunzip2  $file
+                case '*.rar'
+                    unrar x  $file
+                case '*.tar'
+                    tar xf  $file
+                case '*.tbz2'
+                    tar xjf $file
+                case '*.tgz'
+                    tar xzf $file
+                case '*.zip'
+                    unzip  $file
+                case '*.Z'
+                    uncompress  $file
+                case '*.7z'
+                    7z x  $file
+                case '*'
+                    echo "$file cannot be extracted via ex()"
+            end
+        end
 end
