@@ -7,9 +7,15 @@ if exists('+termguicolors')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
-"colorscheme ir_black
-colorscheme base16-default-dark
+" colorscheme base16-default-dark
 set background=dark
+
+let g:gruvbox_material_enable_italic = 1
+let g:gruvbox_material_disable_italic_comment = 1
+let g:gruvbox_material_background = 'medium'
+let g:gruvbox_material_better_performance = 1
+
+colorscheme gruvbox-material
 
 set guioptions-=T " Remove toolbar
 set vb t_vb= " No more beeps
@@ -72,7 +78,6 @@ if (match($TERM, "-256color") != -1) && (match($TERM, "screen-256color") == -1)
   " screen does not (yet) support truecolor
   set termguicolors
 endif
-" colorscheme base16-gruvbox-dark-hard
 hi Normal ctermbg=NONE
 
 if has('nvim')

@@ -12,24 +12,25 @@ unlet autoload_plug_path
 
 call plug#begin()
 " Plug 'rust-lang/rust.vim'
-Plug 'neomake/neomake'
-Plug 'tpope/vim-dispatch'
+" Plug 'neomake/neomake'
+" Plug 'tpope/vim-dispatch'
 
 Plug 'majutsushi/tagbar'
 
-Plug 'ryanoasis/vim-devicons'
-
-Plug 'chriskempson/base16-vim'
+" Plug 'ryanoasis/vim-devicons'
+"Plug 'morhetz/gruvbox'
+Plug 'sainnhe/gruvbox-material'
+" Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline' 			    " statusline
 Plug 'vim-airline/vim-airline-themes'
 
 Plug 'mbbill/undotree'
 
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git', {'autoload':{'filetypes':['gitcommit','gitconfig', 'gitrebase', 'gitsendmail']}}
 
-Plug 'mattn/emmet-vim', {'autoload':{'filetypes':['html','css','sass','scss','less']}} " HTML completion
+" Plug 'mattn/emmet-vim', {'autoload':{'filetypes':['html','css','sass','scss','less']}} " HTML completion
 
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 
@@ -67,7 +68,7 @@ Plug 'stephpy/vim-yaml'
 " Multi cursor
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Semantic language support
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -116,3 +117,5 @@ autocmd BufRead *.lds set filetype=ld
 autocmd BufRead *.tex set filetype=tex
 autocmd BufRead *.trm set filetype=c
 autocmd BufRead *.xlsx.axlsx set filetype=ruby
+
+

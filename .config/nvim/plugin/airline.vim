@@ -16,6 +16,7 @@ function! AirlineInit()
 endfunction
 autocmd VimEnter * call AirlineInit()
 
+let g:airline_theme = 'gruvbox_material'
 
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\ %{fugitive#statusline()}
 
