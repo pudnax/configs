@@ -68,6 +68,12 @@ function! s:list_cmd()
   return base == '.' ? 'fd --type file --follow' : printf('fd --type file --follow | proximity-sort %s', shellescape(expand('%')))
 endfunction
 
+function! TermWrapper(command) abort
+	exec 'term ' . a:command
+endfunction
+command! -bang -nargs=* Cr call TermWrapper('cargo run -- ' . <q-args>)
+
+tnoremap <Esc> <C-\><C-n>
 
 " Open new file adjacent to current file
 nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
@@ -134,6 +140,8 @@ nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 nnoremap <leader>u :UndotreeShow<CR>
 nnoremap <leader>pf /<C-R>=escape(expand("<cWORD>"), "/")<CR><CR>
 nnoremap <leader>pw :CocSearch <C-R>=expand("<cword>")<CR><CR>
+
+vnoremap <leader>p "_dP
 
 map Q <Nop>
 
