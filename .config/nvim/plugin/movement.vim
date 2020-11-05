@@ -70,8 +70,11 @@ endfunction
 
 function! TermWrapper(command) abort
 	exec 'term ' . a:command
+	exec 'startinsert'
 endfunction
-command! -bang -nargs=* Cr call TermWrapper('cargo run -- ' . <q-args>)
+command! -bang -nargs=* Cr call TermWrapper('cargo run ' . <q-args>)
+command! -bang -nargs=* Cc call TermWrapper('cargo check ' . <q-args>)
+command! -bang -nargs=* Cb call TermWrapper('cargo build ' . <q-args>)
 
 tnoremap <Esc> <C-\><C-n>
 
