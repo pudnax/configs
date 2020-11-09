@@ -1,5 +1,7 @@
 {
 	"rust-analyzer.checkOnSave.command": "clippy",
+	// "rust-analyzer.diagnostics.disabled": ["unresolved-import"],
+	"coc.preferences.formatOnSaveFiletypes": ["rust", "c", "cpp", "h", "hpp", "go"],
 	"clangd.semanticHighlighting": true,
 	"diagnostic.checkCurrentLine": true,
 	"git.enableGutters": true

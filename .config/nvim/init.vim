@@ -64,7 +64,7 @@ Plug 'stephpy/vim-yaml'
 " Multi cursor
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Semantic language support
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -113,5 +113,4 @@ autocmd BufRead *.lds set filetype=ld
 autocmd BufRead *.tex set filetype=tex
 autocmd BufRead *.trm set filetype=c
 autocmd BufRead *.xlsx.axlsx set filetype=ruby
-
-autocmd Filetype rust,rs setlocal makeprg=cargo\ build\ --message-format=short
+autocmd BufRead *.fish set filetype=fish
