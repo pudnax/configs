@@ -13,8 +13,9 @@ unlet autoload_plug_path
 call plug#begin()
 " Plug 'neomake/neomake'
 " Plug 'tpope/vim-dispatch'
-
-Plug 'majutsushi/tagbar'
+" Plug 'tmsvg/pear-tree'
+" Plug 'majutsushi/tagbar'
+Plug 'liuchengxu/vista.vim'
 
 Plug 'sainnhe/gruvbox-material'
 Plug 'vim-airline/vim-airline' 			    " statusline

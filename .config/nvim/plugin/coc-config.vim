@@ -1,5 +1,6 @@
+let g:coc_global_extensions=['coc-pairs', 'coc-github-users', 'coc-explorer', 'coc-discord-neovim',  'coc-yaml', 'coc-xml', 'coc-vimtex', 'coc-tsserver', 'coc-sql', 'coc-sh', 'coc-rust-analyzer', 'coc-clangd', 'coc-python', 'coc-pyright', 'coc-markdownlint', 'coc-json', 'coc-go', 'coc-deno', 'coc-cmake', 'coc-git', 'coc-github' ]
 
-let g:coc_global_extensions=[ 'coc-pairs', 'coc-github-users', 'coc-explorer', 'coc-discord-neovim', 'coc-db', 'coc-browser', 'coc-yaml', 'coc-xml', 'coc-vimtex', 'coc-tsserver', 'coc-sql', 'coc-sh', 'coc-rust-analyzer', 'coc-clangd', 'coc-python', 'coc-pyright', 'coc-markdownlint', 'coc-json', 'coc-go', 'coc-deno', 'coc-cmake', 'coc-git', 'coc-github' ]
+" 'coc-pairs''coc-db', 'coc-browser',
 
 " ============== COC Example Config
 " TextEdit might fail if hidden is not set.

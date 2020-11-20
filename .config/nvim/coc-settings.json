@@ -1,7 +1,12 @@
 {
 	"rust-analyzer.checkOnSave.command": "clippy",
+	"rust-analyzer.checkOnSave.extraArgs": [
+		"--target-dir", "/tmp/rust-analyzer-check"
+	],
 	// "rust-analyzer.diagnostics.disabled": ["unresolved-import"],
-	"coc.preferences.formatOnSaveFiletypes": ["rust", "c", "cpp", "h", "hpp", "go"],
+	"coc.preferences.formatOnSaveFiletypes": ["rust", "c", "cpp",
+		"h", "hpp", "go", "glsl", "frag", "vert", "comp",
+		"python", "py"],
 	"clangd.semanticHighlighting": true,
 	"diagnostic.checkCurrentLine": true,
 	"git.enableGutters": true
