@@ -7,12 +7,6 @@ augroup filetypedetect
   autocmd Filetype gitcommit                         setlocal spell tw=72 colorcolumn=73
   " nftables
   autocmd BufRead,BufNewFile *.nft setfiletype nftables
-  " Go shortcuts
-  au FileType go nmap <leader>t <Plug>(go-test)
-  au FileType go nmap <Leader>r <Plug>(go-rename)
-  au FileType go nmap <leader>c <Plug>(go-coverage)
-  " Rust language server
-  "au FileType rust :LanguageClientStart
   " Shorter columns in text
   autocmd Filetype tex setlocal spell tw=80 colorcolumn=81
   autocmd Filetype text setlocal spell tw=72 colorcolumn=73

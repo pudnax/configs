@@ -4,7 +4,6 @@
 filetype plugin indent on
 set autoindent
 set encoding=utf-8
-set scrolloff=4
 set noshowmode
 " set nowrap
 set nojoinspaces
@@ -23,10 +22,6 @@ set clipboard+=unnamedplus
 " Settings needed for .lvimrc
 set exrc
 set secure
-
-" Sane splits
-set splitbelow
-set splitright
 
 " Permanent undo
 set undodir=~/.vimdid
@@ -51,9 +46,10 @@ set formatoptions+=n " detect lists for formatting
 set formatoptions+=b " auto-wrap in insert mode, and do not wrap old long lines
 
 " Proper search
-set incsearch
-set ignorecase
-set smartcase
+set hlsearch 			" Highlight matches
+set incsearch 			" Highlight matches as you type
+set ignorecase          " Case-insensitive searching
+set smartcase 			" But case-sensitive if expression contains a capital letter
 set gdefault
 
 " Search results centered please

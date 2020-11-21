@@ -150,7 +150,7 @@ map <C-t>k :tabn<cr>
 " Clamp curled braces down on <enter>
 inoremap {<cr> {<cr>}<c-o><s-o>
 
-nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
+" nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 nnoremap <leader>u :UndotreeShow<CR>
 nnoremap <leader>pf /<C-R>=escape(expand("<cWORD>"), "/")<CR><CR>
 nnoremap <leader>pw :CocSearch <C-R>=expand("<cword>")<CR><CR>
@@ -163,7 +163,7 @@ map Q <Nop>
 vnoremap <c-c> y`]
 
 " Ctrl-r: Easier search and replace
-vnoremap <c-r> "hy:%s/<c-r>h//gc<left><left><left>
+" vnoremap <c-r> "hy:%s/<c-r>h//gc<left><left><left>
 
 " Ctrl-s: Easier substitue
 noremap <c-s> :s/\%V//g<left><left><left>

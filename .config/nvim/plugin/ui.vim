@@ -45,11 +45,6 @@ set hidden			" Handle multiple buffers better
 set ruler 			" Show the cursor position all the time
 set scrolloff=5			" set 5 lines to the cursur (move when moving verticaly)
 set sidescrolloff=5		" set 5 columns to the cursur (move when moving verticaly)
-set wildmenu 			" Enhanced commandline completion
-set ignorecase 			" Case-insensitive searching
-set smartcase 			" But case-sensitive if expression contains a capital letter
-set incsearch 			" Highlight matches as you type
-set hlsearch 			" Highlight matches
 set showmatch 			" Briefly jump to matching brace
 set matchtime=2 		" Speed things up
 set magic 			" Regular expressions
