@@ -17,6 +17,8 @@ call plug#begin()
 " Plug 'majutsushi/tagbar'
 Plug 'liuchengxu/vista.vim'
 
+Plug 'ziglang/zig.vim'
+
 Plug 'sainnhe/gruvbox-material'
 Plug 'vim-airline/vim-airline' 			    " statusline
 Plug 'vim-airline/vim-airline-themes'
