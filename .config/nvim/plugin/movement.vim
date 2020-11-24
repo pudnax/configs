@@ -49,7 +49,7 @@ map L $
 " Neat X clipboard integration
 " ,p will paste clipboard into buffer
 " ,c will copy entire buffer into clipboard
-noremap <leader>p :read !xsel --clipboard --output<cr>
+" noremap <leader>p :read !xsel --clipboard --output<cr>
 noremap <leader>c :w !xsel -ib<cr><cr>
 
 " <leader>s for Rg search
@@ -86,6 +86,8 @@ autocmd Filetype rust nnoremap <leader>fr :Cr<CR>
 autocmd Filetype rust nnoremap <leader>fc :Cc<CR>
 autocmd Filetype rust nnoremap <leader>fb :Cb<CR>
 autocmd Filetype rust nnoremap <leader>ft :Ct<CR>
+
+autocmd Filetype glsl map <C-K> :pyf ~/bins/clang-format.py<cr>
 
 tnoremap <Esc> <C-\><C-n>
 
