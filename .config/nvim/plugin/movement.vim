@@ -54,14 +54,14 @@ noremap <leader>c :w !xsel -ib<cr><cr>
 
 " <leader>s for Rg search
 " There are have to be trailing whitespace. Do not delete it!
-noremap <leader>s :Rg 
-let g:fzf_layout = { 'down': '~20%' }
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
+" noremap <leader>s :Rg 
+" let g:fzf_layout = { 'down': '~20%' }
+" command! -bang -nargs=* Rg
+"   \ call fzf#vim#grep(
+"   \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+"   \   <bang>0 ? fzf#vim#with_preview('up:60%')
+"   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+"   \   <bang>0)
 
 function! s:list_cmd()
   let base = fnamemodify(expand('%'), ':h:.:S')
@@ -165,8 +165,8 @@ noremap <c-s> :s/\%V//g<left><left><left>
 " Ctrl-f: Find with MultipleCursors
 " vnoremap <c-f> :MultipleCursorsFind
 " Open hotkeys
-map <C-p> :Files<CR>
-nmap <leader>; :Buffers<CR>
+" map <C-p> :Files<CR>
+" nmap <leader>; :Buffers<CR>
 
 " Quick-save
 nmap <leader>w :w<CR>

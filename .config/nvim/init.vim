@@ -17,7 +17,9 @@ call plug#begin()
 " Plug 'majutsushi/tagbar'
 Plug 'liuchengxu/vista.vim'
 
-Plug 'ziglang/zig.vim'
+Plug 'vimwiki/vimwiki'
+
+" Plug 'ziglang/zig.vim'
 
 Plug 'sainnhe/gruvbox-material'
 Plug 'vim-airline/vim-airline' 			    " statusline
@@ -55,9 +57,14 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'machakann/vim-highlightedyank'
 
 " Fuzzy finder
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'stsewd/fzf-checkout.vim'
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf.vim'
+" Plug 'stsewd/fzf-checkout.vim'
+
+" Teletscope
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 Plug 'plasticboy/vim-markdown'
 " Syntactic language support
