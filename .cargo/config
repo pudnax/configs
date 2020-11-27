@@ -1,0 +1,3 @@
+[build]
+rustc-wrapper = "sccache"
+target-dir = '.cache/cargo-target'
