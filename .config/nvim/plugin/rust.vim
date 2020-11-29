@@ -1,3 +1,6 @@
+" Follow Rust code style rules
+autocmd Filetype rust set colorcolumn=100
+
 autocmd Filetype rust,rs setlocal makeprg=cargo\ check\ --message-format=short
 
 autocmd QuickFixCmdPost [^l]* nested cwindow
