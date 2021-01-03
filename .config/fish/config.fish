@@ -40,8 +40,6 @@ export PATH="$HOME/.dotnet/tools:$PATH"
 export PATH="$HOME/bins:$PATH"
 export PATH="$HOME/.whale/bin:$PATH"
 
-export GITHUB_PERSONAL_TOKEN=0bece0968c950bf04096cb1a2074eb4ca39af807
-
 export GPG_TTY=(tty)
 
 # export NVM_DIR="$HOME/.nvm"
@@ -57,6 +55,8 @@ export BROWSER=/usr/bin/firefox
 
 bind -M insert \t accept-autosuggestion
 set fish_greeting
+
+# bass source ~/HOME/third_party/vulkan_1.2.154.0/setup-env.sh
 
 function _z_cd
     cd $argv
@@ -151,7 +151,7 @@ function ex --description "Universal archive extractor script"
             case '*.tgz'
                 tar xzf $file
             case '*.zip'
-                unzip  $file
+                unzip  $file -d $file
             case '*.Z'
                 uncompress  $file
             case '*.7z'
