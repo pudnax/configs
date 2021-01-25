@@ -60,7 +60,7 @@ window:
   #
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  startup_mode: Fullscreen
+  startup_mode: Windowed
 
   # Window title
   #title: Alacritty
@@ -98,7 +98,7 @@ scrolling:
 
 # Font configuration
 font:
-  size: 8.5
+  size: 9.0
 
   # Normal (roman) font face
   normal:
@@ -108,27 +108,15 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    # family: "Dina"
-    # family: "ProggyCleanTTSZ Nerd Font Mono"
-    # family: "ProggyCleanTTCE Nerd Font Mono"
-    # family: "ProggyCleanTT Nerd Font Mono"
     # family: "TSCu_Comic"
     # family: "TSCu_Times"
-     family: "GohuFont Powerline" # Fira Code
-    # family: "Monofuritalic Nerd Font Mono"
-    # family: "Antique"
-    # family: "Artist Alt"
-    # family: "Artsie"
-    # family: "LucidaTerminal"
+     family: "GohuFont Powerline"
+    # family: Hack
+    # family: "Hack Nerd Font Mono"
+    # family: "Tex Gyre Chorus"
     # family: "Terminal"
     # family: "Source Code Pro"
-    # family: "xos4 Terminus"
-    # family: "Hack"
-    # family: "Fira Code"
-    # family: "Hermit"
-    # family: "Zin"
     # family: "TerminessTTF Nerd Font Mono"
-    # family: "Misc Tamsyn"
     #
     # ~
     #
