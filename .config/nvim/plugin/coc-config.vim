@@ -1,6 +1,6 @@
-let g:coc_global_extensions=['coc-pairs', 'coc-github-users', 'coc-explorer', 'coc-discord-neovim',  'coc-yaml', 'coc-xml', 'coc-vimtex', 'coc-tsserver', 'coc-sql', 'coc-sh', 'coc-rust-analyzer', 'coc-clangd', 'coc-python', 'coc-pyright', 'coc-markdownlint', 'coc-json', 'coc-go', 'coc-deno', 'coc-cmake', 'coc-git', 'coc-github' ]
+let g:coc_global_extensions=['coc-pairs', 'coc-github-users', 'coc-explorer', 'coc-discord-neovim',  'coc-yaml', 'coc-xml', 'coc-vimtex', 'coc-tsserver', 'coc-sql', 'coc-sh', 'coc-rust-analyzer', 'coc-clangd',  'coc-pyright', 'coc-markdownlint', 'coc-json', 'coc-go', 'coc-deno', 'coc-cmake', 'coc-git', 'coc-github' ]
 
-" 'coc-pairs''coc-db', 'coc-browser',
+" 'coc-pairs''coc-db', 'coc-browser','coc-python',
 
 " ============== COC Example Config
 " TextEdit might fail if hidden is not set.
@@ -100,11 +100,11 @@ augroup end
 
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+xmap <leader>c  <Plug>(coc-codeaction-selected)
+nmap <leader>c  <Plug>(coc-codeaction-selected)
 
 " Remap keys for applying codeAction to the current buffer.
-nmap <leader>ac  <Plug>(coc-codeaction)
+nmap <leader>cc  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
 
