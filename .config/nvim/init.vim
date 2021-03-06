@@ -19,7 +19,7 @@ Plug 'liuchengxu/vista.vim'
 
 Plug 'vimwiki/vimwiki'
 
-" Plug 'ziglang/zig.vim'
+Plug 'ziglang/zig.vim'
 
 Plug 'sainnhe/gruvbox-material'
 Plug 'vim-airline/vim-airline' 			    " statusline
@@ -65,6 +65,7 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 Plug 'plasticboy/vim-markdown'
 " Syntactic language support
