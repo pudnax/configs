@@ -3,7 +3,7 @@ project(new_project VERSION 0.1.0)
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
-add_compile_options("-Wall" "-Wextra" "-Werror" "$<$<CONFIG:RELEASE>:-O3>" "-pedantic" "-Wshadow" "-Wconversion" "-Wlong-long" "-Wshift-overflow" "-fno-sanitize-recover" "-fstack-protector")
+add_compile_options("-Wall" "-Wextra" "$<$<CONFIG:RELEASE>:-O3>" "-pedantic" "-Wshadow" "-Wconversion" "-Wlong-long" "-Wshift-overflow" "-fno-sanitize-recover" "-fstack-protector")
 
 include(CTest)
 enable_testing()

@@ -32,7 +32,7 @@ M.git_branches = function()
 end
 EOF
 
-nnoremap <C-p> :lua require('telescope.builtin').find_files()<CR>
-nnoremap <leader>s :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword> ") }<CR>
-nnoremap <leader>; :lua require('telescope.builtin').buffers()<CR>
-nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
+nnoremap <leader>s <cmd>Telescope live_grep<cr>
+nnoremap <C-p> <cmd>lua require('telescope.builtin').find_files()<CR>
+nnoremap <leader>; <cmd>lua require('telescope.builtin').buffers()<CR>
+nnoremap <leader>ps <cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
