@@ -6,7 +6,8 @@ abbr -a ct 'cargo t'
 
 alias o=xdg-open
 alias c=cargo
-alias ccw='cargo check 2>&1 | rg -i --multiline "(^error.*\n.*)|(aborting)|(warnings)"'
+alias ccw='cargo clippy 2>&1 | rg -i --multiline "(^error.*\n.*)|(aborting)|(warnings)"'
+alias cck="cargo watch -s 'cargo clippy --color always 2>&1 | less -R'"
 
 alias tmux="TERM=screen-256color-bce tmux"
 
@@ -30,8 +31,6 @@ alias psmem10='ps auxf | sort -nr -k 4 | head -10'
 alias pscpu='ps auxf | sort -nr -k 3'
 alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
 
-export JAVA_HOME="/usr/lib/jvm/default/"
-
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/.gem/ruby/2.7.0/bin:$PATH"
@@ -39,6 +38,8 @@ export PATH="$HOME/.nimble/bin:$PATH"
 export PATH="$HOME/.dotnet/tools:$PATH"
 export PATH="$HOME/bins:$PATH"
 export PATH="$HOME/.whale/bin:$PATH"
+export PATH="$HOME/HOME/third_party/zig:$PATH"
+export PATH="$HOME/HOME/third_party/zls/zig-out/bin:$PATH"
 
 export GPG_TTY=(tty)
 
@@ -56,7 +57,11 @@ export BROWSER=/usr/bin/firefox
 bind -M insert \t accept-autosuggestion
 set fish_greeting
 
-# bass source ~/HOME/third_party/vulkan_1.2.154.0/setup-env.sh
+bass source ~/HOME/third_party/vulkan/1.2.176.1/setup-env.sh
+# export VULKAN_SDK=~/HOME/third_party/vulkan/1.2.176.1/x86_64
+# export PATH=$VULKAN_SDK/bin:$PATH
+# export LD_LIBRARY_PATH=$VULKAN_SDK/lib:$LD_LIBRARY_PATH
+# export VK_LAYER_PATH=$VULKAN_SDK/etc/vulkan/explicit_layer.d
 
 function _z_cd
     cd $argv
@@ -151,7 +156,7 @@ function ex --description "Universal archive extractor script"
             case '*.tgz'
                 tar xzf $file
             case '*.zip'
-                unzip  $file -d $file
+                unzip  $file -d (echo $file | sed 's/\.[^.]*$//')
             case '*.Z'
                 uncompress  $file
             case '*.7z'
