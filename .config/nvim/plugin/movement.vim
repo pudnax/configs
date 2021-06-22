@@ -23,15 +23,18 @@ onoremap <C-k> <Esc>
 lnoremap <C-k> <Esc>
 tnoremap <C-k> <Esc>
 
-nnoremap <C-c> <Esc>
-inoremap <C-c> <Esc>
-vnoremap <C-c> <Esc>
-snoremap <C-c> <Esc>
-xnoremap <C-c> <Esc>
-cnoremap <C-c> <Esc>
-onoremap <C-c> <Esc>
-lnoremap <C-c> <Esc>
-tnoremap <C-c> <Esc>
+" nnoremap <C-c> <Esc>
+" inoremap <C-c> <Esc>
+" vnoremap <C-c> <Esc>
+" snoremap <C-c> <Esc>
+" xnoremap <C-c> <Esc>
+" cnoremap <C-c> <Esc>
+" onoremap <C-c> <Esc>
+" lnoremap <C-c> <Esc>
+" tnoremap <C-c> <Esc>
+
+" Change current folder(pwd)
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
 " Ctrl+h to stop searching
 vnoremap <C-h> :nohlsearch<cr>
@@ -50,7 +53,7 @@ map L $
 " ,p will paste clipboard into buffer
 " ,c will copy entire buffer into clipboard
 " noremap <leader>p :read !xsel --clipboard --output<cr>
-noremap <leader>c :w !xsel -ib<cr><cr>
+" noremap <leader>c :w !xsel -ib<cr><cr>
 
 " <leader>s for Rg search
 " There are have to be trailing whitespace. Do not delete it!
@@ -114,7 +117,7 @@ nnoremap <leader>, :set invlist<cr>
 nnoremap <leader>q g<c-g>
 
 " Keymap for replacing up to next _ or -
-noremap <leader>m ct_
+" noremap <leader>m ct_
 
 " I can type :help on my own, thanks.
 map <F1> <Esc>
@@ -171,5 +174,6 @@ noremap <c-s> :s/\%V//g<left><left><left>
 " Quick-save
 nmap <leader>w :w<CR>
 
+" Move lines in visual mode
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv

@@ -17,7 +17,11 @@ call plug#begin()
 " Plug 'majutsushi/tagbar'
 Plug 'liuchengxu/vista.vim'
 
+Plug 'TimUntersberger/neogit'
+
 Plug 'vimwiki/vimwiki'
+
+Plug 'petrushka/vim-opencl'
 
 Plug 'ziglang/zig.vim'
 
@@ -50,6 +54,7 @@ Plug 'ron-rs/ron.vim'
 " Shaders
 Plug 'tikhomirov/vim-glsl'
 Plug 'beyondmarc/hlsl.vim'
+" Plug 'petrbroz/vim-glsl'
 
 " Trailing whitespaces and :FixWhitespace
 Plug 'bronson/vim-trailing-whitespace'
@@ -102,8 +107,8 @@ set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNO
 " =============================================================================
 
 " Prevent accidental writes to buffers that shouldn't be edited
-autocmd BufRead *.orig set readonly
-autocmd BufRead *.pacnew set readonly
+autocmd! BufRead *.orig set readonly
+autocmd! BufRead *.pacnew set readonly
 
 " Leave paste mode when leaving insert mode
 autocmd InsertLeave * set nopaste
@@ -115,11 +120,13 @@ if has("autocmd")
 endif
 
 " Help filetype detection
-autocmd BufRead *.plot set filetype=gnuplot
-autocmd BufRead *.md set filetype=markdown
-autocmd BufRead *.lds set filetype=ld
-autocmd BufRead *.tex set filetype=tex
-autocmd BufRead *.trm set filetype=c
-autocmd BufRead *.xlsx.axlsx set filetype=ruby
-autocmd BufRead *.fish set filetype=fish
-autocmd BufRead *.frag,*.vert,*.comp,*.glsl set filetype=glsl
+autocmd! BufRead *.plot set filetype=gnuplot
+autocmd! BufRead *.md set filetype=markdown
+autocmd! BufRead *.lds set filetype=ld
+autocmd! BufRead *.tex set filetype=tex
+autocmd! BufRead *.trm set filetype=c
+autocmd! BufRead *.xlsx.axlsx set filetype=ruby
+autocmd! BufRead *.fish set filetype=fish
+autocmd! BufRead *.frag,*.vert,*.comp,*.glsl set filetype=glsl
+
+nmap gx yiW:!xdg-open <cWORD><CR> <C-r>" & <CR><CR>

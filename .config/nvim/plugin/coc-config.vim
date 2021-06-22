@@ -1,4 +1,9 @@
-let g:coc_global_extensions=['coc-pairs', 'coc-github-users', 'coc-explorer', 'coc-discord-neovim',  'coc-yaml', 'coc-xml', 'coc-vimtex', 'coc-tsserver', 'coc-sql', 'coc-sh', 'coc-rust-analyzer', 'coc-clangd',  'coc-pyright', 'coc-markdownlint', 'coc-json', 'coc-go', 'coc-deno', 'coc-cmake', 'coc-git', 'coc-github' ]
+let g:coc_global_extensions =['coc-pairs', 'coc-github-users', 'coc-explorer']
+let g:coc_global_extensions+=['coc-discord-neovim', 'coc-yaml', 'coc-xml']
+let g:coc_global_extensions+=['coc-vimtex', 'coc-tsserver', 'coc-sql', 'coc-sh']
+let g:coc_global_extensions+=['coc-rust-analyzer', 'coc-clangd', 'coc-pyright']
+let g:coc_global_extensions+=['coc-markdownlint', 'coc-json', 'coc-go', 'coc-deno']
+let g:coc_global_extensions+=['coc-cmake', 'coc-git', 'coc-github']
 
 " 'coc-pairs''coc-db', 'coc-browser','coc-python',
 
@@ -136,7 +141,7 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
 " Show all diagnostics.
