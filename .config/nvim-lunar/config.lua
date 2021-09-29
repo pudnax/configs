@@ -67,7 +67,7 @@ lvim.builtin.which_key.mappings["t"] = {
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.dashboard.active = true
 lvim.builtin.terminal.active = true
-lvim.builtin.nvimtree.side = "left"
+lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 0
 
 -- if you don't want all the parsers change this to a table of the ones you want
@@ -129,6 +129,7 @@ lvim.lang.c.formatters = { { exe = "clang_format" } }
 lvim.lang.cpp.formatters = lvim.lang.c.formatters
 
 -- Additional Plugins
+lvim.lsp.override = { "rust" }
 lvim.plugins = {
 	{ "folke/tokyonight.nvim" },
 	{
@@ -472,6 +473,13 @@ lvim.plugins = {
 			rust_tools.setup(opts)
 		end,
 		ft = { "rust", "rs" }, -- or you can not lazy load and remove this line
+	},
+	{
+		"Saecki/crates.nvim",
+		config = function()
+			require("cmp").setup.buffer({ sources = { { name = "crates" } } })
+		end,
+		requires = { "nvim-lua/plenary.nvim" },
 	},
 }
 
