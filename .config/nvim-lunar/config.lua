@@ -133,225 +133,175 @@ lvim.lsp.override = { "rust" }
 lvim.plugins = {
 	{ "folke/tokyonight.nvim" },
 	{
-		"ray-x/lsp_signature.nvim",
-		config = function()
-			local cfg = {
-				bind = true,
-				doc_lines = 10,
-				floating_window = false, -- show hint in a floating window, set to false for virtual text only mode
-				floating_window_above_cur_line = true,
-				fix_pos = false, -- set to true, the floating window will not auto-close until finish all parameters
-				hint_enable = true, -- virtual hint enable
-				-- hint_prefix = "🐼 ", -- Panda for parameter
-				hint_prefix = " ",
-				hint_scheme = "String",
-				-- use_lspsaga = false, -- set to true if you want to use lspsaga popup
-				hi_parameter = "Search", -- how your parameter will be highlight
-				max_height = 12, -- max height of signature floating_window, if content is more than max_height, you can scroll down
-				-- to view the hiding contents
-				max_width = 120, -- max_width of signature floating_window, line will be wrapped if exceed max_width
-				handler_opts = {
-					border = "single", -- double, single, shadow, none
-				},
-				-- transpancy = 80,
-				-- extra_trigger_chars = { "(", "," }, -- Array of extra characters that will trigger signature completion, e.g., {"(", ","}
-				zindex = 200, -- by default it will be on top of all floating windows, set to 50 send it to bottom
-				debug = false, -- set to true to enable debug logging
-				log_path = "debug_log_file_path", -- debug log path
-				padding = "", -- character to pad on left and right of signature can be ' ', or '|'  etc
-				shadow_blend = 36, -- if you using shadow as border use this set the opacity
-				shadow_guibg = "Black", -- if you using shadow as border use this set the color e.g. 'Green' or '#121315'
-			}
-			require("lsp_signature").setup(cfg)
-			-- require("lsp_signature").on_attach()
-		end,
-		event = "InsertEnter",
-	},
-
-	{ "liuchengxu/vista.vim" },
-	{ "rhysd/clever-f.vim" },
-	{ "ron-rs/ron.vim" },
-	{ "tikhomirov/vim-glsl" },
-	{ "dyng/ctrlsf.vim" },
-	{ "mattn/webapi-vim" },
-	{ "bronson/vim-trailing-whitespace" },
-	{
-		"tpope/vim-fugitive",
-		cmd = {
-			"G",
-			"Git",
-			"Gdiffsplit",
-			"Gread",
-			"Gwrite",
-			"Ggrep",
-			"GMove",
-			"GDelete",
-			"GBrowse",
-			"GRemove",
-			"GRename",
-			"Glgrep",
-			"Gedit",
-		},
-		ft = { "fugitive" },
-	},
-	{ "steelsojka/pears.nvim" },
-	{ "vimwiki/vimwiki" },
-	{ "shaunsingh/nord.nvim" },
-	{ "rktjmp/lush.nvim" },
-	{ "ellisonleao/gruvbox.nvim" },
-	{ "tjdevries/colorbuddy.vim" },
-	{ "tjdevries/gruvbuddy.nvim" },
-	{ "DingDean/wgsl.vim" },
-	{
-		"nvim-telescope/telescope-fzf-native.nvim",
-		run = "make",
-		after = "telescope.nvim",
-		config = function()
-			require("telescope").load_extension("fzf")
-		end,
-	},
-
-	{
-		"rmagatti/goto-preview",
-		config = function()
-			require("goto-preview").setup({
-				width = 120, -- Width of the floating window
-				height = 25, -- Height of the floating window
-				default_mappings = false, -- Bind default mappings
-				debug = false, -- Print debug information
-				opacity = nil, -- 0-100 opacity level of the floating window where 100 is fully transparent.
-				post_open_hook = nil, -- A function taking two arguments, a buffer and a window to be ran as a hook.
-				-- You can use "default_mappings = true" setup option
-				-- Or explicitly set keybindings
-				vim.cmd("nnoremap gpd <cmd>lua require('goto-preview').goto_preview_definition()<CR>"),
-				vim.cmd("nnoremap gpi <cmd>lua require('goto-preview').goto_preview_implementation()<CR>"),
-				vim.cmd("nnoremap gP <cmd>lua require('goto-preview').close_all_win()<CR>"),
-			})
-		end,
-	},
-	{
-		"simrat39/symbols-outline.nvim",
-		cmd = "SymbolsOutline",
-	},
-	{
 		"folke/trouble.nvim",
 		cmd = "TroubleToggle",
 	},
+	-- 	{
+	-- 		"phaazon/hop.nvim",
+	-- 		event = "BufRead",
+	-- 		config = function()
+	-- 			require("hop").setup()
+	-- 			vim.api.nvim_set_keymap("n", "s", ":HopChar2<cr>", { silent = true })
+	-- 			vim.api.nvim_set_keymap("n", "S", ":HopWord<cr>", { silent = true })
+	-- 		end,
+	-- 	},
+	-- 	{
+	-- 		"kevinhwang91/rnvimr",
+	-- 		cmd = "RnvimrToggle",
+	-- 		config = function()
+	-- 			vim.g.rnvimr_draw_border = 1
+	-- 			vim.g.rnvimr_pick_enable = 1
+	-- 			vim.g.rnvimr_bw_enable = 1
+	-- 		end,
+	-- 	},
+	-- 	{
+	-- 		"andymass/vim-matchup",
+	-- 		event = "CursorMoved",
+	-- 		config = function()
+	-- 			vim.g.matchup_matchparen_offscreen = { method = "popup" }
+	-- 		end,
+	-- 	},
+	-- 	{
+	-- 		"tpope/vim-fugitive",
+	-- 		cmd = {
+	-- 			"G",
+	-- 			"Git",
+	-- 			"Gdiffsplit",
+	-- 			"Gread",
+	-- 			"Gwrite",
+	-- 			"Ggrep",
+	-- 			"GMove",
+	-- 			"GDelete",
+	-- 			"GBrowse",
+	-- 			"GRemove",
+	-- 			"GRename",
+	-- 			"Glgrep",
+	-- 			"Gedit",
+	-- 		},
+	-- 		ft = { "fugitive" },
+	-- 	},
+	-- 	{
+	-- 		"metakirby5/codi.vim",
+	-- 		cmd = "Codi",
+	-- 	},
+	-- 	{
+	-- 		"monaqa/dial.nvim",
+	-- 		event = "BufRead",
+	-- 		config = function()
+	-- 			local dial = require("dial")
+	-- 			vim.cmd([[
+	--     nmap <C-a> <Plug>(dial-incrementq)
+	--       nmap <C-x> <Plug>(dial-decrement)
+	--       vmap <C-a> <Plug>(dial-increment)
+	--       vmap <C-x> <Plug>(dial-decrement)
+	--       vmap g<C-a> <Plug>(dial-increment-additional)
+	--       vmap g<C-x> <Plug>(dial-decrement-additional)
+	--     ]])
 
-	{
-		"monaqa/dial.nvim",
-		event = "BufRead",
-		config = function()
-			local dial = require("dial")
-			vim.cmd([[
-        nmap <C-a> <Plug>(dial-increment)
-          nmap <C-x> <Plug>(dial-decrement)
-          vmap <C-a> <Plug>(dial-increment)
-          vmap <C-x> <Plug>(dial-decrement)
-          vmap g<C-a> <Plug>(dial-increment-additional)
-          vmap g<C-x> <Plug>(dial-decrement-additional)
-        ]])
+	-- 			dial.augends["custom#boolean"] = dial.common.enum_cyclic({
+	-- 				name = "boolean",
+	-- 				strlist = { "true", "false" },
+	-- 			})
+	-- 			table.insert(dial.config.searchlist.normal, "custom#boolean")
 
-			dial.augends["custom#boolean"] = dial.common.enum_cyclic({
-				name = "boolean",
-				strlist = { "true", "false" },
-			})
-			table.insert(dial.config.searchlist.normal, "custom#boolean")
-
-			-- For Languages which prefer True/False, e.g. python.
-			dial.augends["custom#Boolean"] = dial.common.enum_cyclic({
-				name = "Boolean",
-				strlist = { "True", "False" },
-			})
-			table.insert(dial.config.searchlist.normal, "custom#Boolean")
-		end,
-	},
-	{
-		"npxbr/glow.nvim",
-		ft = { "markdown" },
-		-- run = "yay -S glow"
-	},
-	{
-		"phaazon/hop.nvim",
-		event = "BufRead",
-		config = function()
-			require("hop").setup()
-			vim.api.nvim_set_keymap("n", "s", ":HopChar2<cr>", { silent = true })
-			vim.api.nvim_set_keymap("n", "S", ":HopWord<cr>", { silent = true })
-		end,
-	},
-	{
-		"ggandor/lightspeed.nvim",
-		event = "BufRead",
-	},
-	{
-		"windwp/nvim-spectre",
-		event = "BufRead",
-		config = function()
-			require("spectre").setup()
-		end,
-	},
-	{
-		"camspiers/snap",
-		rocks = "fzy",
-		config = function()
-			local snap = require("snap")
-			local layout = snap.get("layout").bottom
-			local file = snap.config.file:with({ consumer = "fzy", layout = layout })
-			local vimgrep = snap.config.vimgrep:with({ layout = layout })
-			snap.register.command("find_files", file({ producer = "ripgrep.file" }))
-			snap.register.command("buffers", file({ producer = "vim.buffer" }))
-			snap.register.command("oldfiles", file({ producer = "vim.oldfile" }))
-			snap.register.command("live_grep", vimgrep({}))
-		end,
-	},
-	{
-		"andymass/vim-matchup",
-		event = "CursorMoved",
-		config = function()
-			vim.g.matchup_matchparen_offscreen = { method = "popup" }
-		end,
-	},
-	{
-		"nacro90/numb.nvim",
-		event = "BufRead",
-		config = function()
-			require("numb").setup({
-				show_numbers = true, -- Enable 'number' for the window while peeking
-				show_cursorline = true, -- Enable 'cursorline' for the window while peeking
-			})
-		end,
-	},
-	{
-		"kevinhwang91/nvim-bqf",
-		event = { "BufRead", "BufNew" },
-		config = function()
-			require("bqf").setup({
-				auto_enable = true,
-				preview = {
-					win_height = 12,
-					win_vheight = 12,
-					delay_syntax = 80,
-					border_chars = { "┃", "┃", "━", "━", "┏", "┓", "┗", "┛", "█" },
-				},
-				func_map = {
-					vsplit = "",
-					ptogglemode = "z,",
-					stoggleup = "",
-				},
-				filter = {
-					fzf = {
-						action_for = { ["ctrl-s"] = "split" },
-						extra_opts = { "--bind", "ctrl-o:toggle-all", "--prompt", "> " },
-					},
-				},
-			})
-		end,
-	},
-	{
-		"metakirby5/codi.vim",
-		cmd = "Codi",
-	},
+	-- 			-- For Languages which prefer True/False, e.g. python.
+	-- 			dial.augends["custom#Boolean"] = dial.common.enum_cyclic({
+	-- 				name = "Boolean",
+	-- 				strlist = { "True", "False" },
+	-- 			})
+	-- 			table.insert(dial.config.searchlist.normal, "custom#Boolean")
+	-- 		end,
+	-- 	},
+	-- 	{
+	-- 		"npxbr/glow.nvim",
+	-- 		ft = { "markdown" },
+	-- 		-- run = "yay -S glow"
+	-- 	},
+	-- 	{ "oberblastmeister/neuron.nvim" },
+	-- 	{ "mattn/webapi-vim" },
+	-- 	{ "rhysd/clever-f.vim" },
+	-- 	{ "ron-rs/ron.vim" },
+	-- 	{ "liuchengxu/vista.vim" },
+	-- 	{ "DingDean/wgsl.vim" },
+	-- 	{ "tikhomirov/vim-glsl" },
+	-- 	{ "bronson/vim-trailing-whitespace" },
+	-- 	{
+	-- 		"ethanholz/nvim-lastplace",
+	-- 		event = "BufRead",
+	-- 		config = function()
+	-- 			require("nvim-lastplace").setup({
+	-- 				lastplace_ignore_buftype = { "quickfix", "nofile", "help" },
+	-- 				lastplace_ignore_filetype = {
+	-- 					"gitcommit",
+	-- 					"gitrebase",
+	-- 					"svn",
+	-- 					"hgcommit",
+	-- 				},
+	-- 				lastplace_open_folds = true,
+	-- 			})
+	-- 		end,
+	-- 	},
+	-- 	{
+	-- 		"rmagatti/goto-preview",
+	-- 		config = function()
+	-- 			require("goto-preview").setup({
+	-- 				width = 120, -- Width of the floating window
+	-- 				height = 25, -- Height of the floating window
+	-- 				default_mappings = false, -- Bind default mappings
+	-- 				debug = false, -- Print debug information
+	-- 				opacity = nil, -- 0-100 opacity level of the floating window where 100 is fully transparent.
+	-- 				post_open_hook = nil, -- A function taking two arguments, a buffer and a window to be ran as a hook.
+	-- 				-- You can use "default_mappings = true" setup option
+	-- 				-- Or explicitly set keybindings
+	-- 				vim.cmd("nnoremap gpd <cmd>lua require('goto-preview').goto_preview_definition()<CR>"),
+	-- 				vim.cmd("nnoremap gpi <cmd>lua require('goto-preview').goto_preview_implementation()<CR>"),
+	-- 				vim.cmd("nnoremap gP <cmd>lua require('goto-preview').close_all_win()<CR>"),
+	-- 			})
+	-- 		end,
+	-- 	},
+	-- 	{
+	-- 		"nacro90/numb.nvim",
+	-- 		event = "BufRead",
+	-- 		config = function()
+	-- 			require("numb").setup({
+	-- 				show_numbers = true, -- Enable 'number' for the window while peeking
+	-- 				show_cursorline = true, -- Enable 'cursorline' for the window while peeking
+	-- 			})
+	-- 		end,
+	-- 	},
+	-- 	{
+	-- 		"windwp/nvim-spectre",
+	-- 		event = "BufRead",
+	-- 		config = function()
+	-- 			require("spectre").setup()
+	-- 		end,
+	-- 	},
+	-- 	{
+	-- 		"kevinhwang91/nvim-bqf",
+	-- 		event = { "BufRead", "BufNew" },
+	-- 		config = function()
+	-- 			require("bqf").setup({
+	-- 				auto_enable = true,
+	-- 				preview = {
+	-- 					win_height = 12,
+	-- 					win_vheight = 12,
+	-- 					delay_syntax = 80,
+	-- 					border_chars = { "┃", "┃", "━", "━", "┏", "┓", "┗", "┛", "█" },
+	-- 				},
+	-- 				func_map = {
+	-- 					vsplit = "",
+	-- 					ptogglemode = "z,",
+	-- 					stoggleup = "",
+	-- 				},
+	-- 				filter = {
+	-- 					fzf = {
+	-- 						action_for = { ["ctrl-s"] = "split" },
+	-- 						extra_opts = { "--bind", "ctrl-o:toggle-all", "--prompt", "> " },
+	-- 					},
+	-- 				},
+	-- 			})
+	-- 		end,
+	-- 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = "BufRead",
@@ -362,22 +312,6 @@ lvim.plugins = {
 			vim.g.indent_blankline_buftype_exclude = { "terminal" }
 			vim.g.indent_blankline_show_trailing_blankline_indent = false
 			vim.g.indent_blankline_show_first_indent_level = false
-		end,
-	},
-	{
-		"ethanholz/nvim-lastplace",
-		event = "BufRead",
-		config = function()
-			require("nvim-lastplace").setup({
-				lastplace_ignore_buftype = { "quickfix", "nofile", "help" },
-				lastplace_ignore_filetype = {
-					"gitcommit",
-					"gitrebase",
-					"svn",
-					"hgcommit",
-				},
-				lastplace_open_folds = true,
-			})
 		end,
 	},
 	{
