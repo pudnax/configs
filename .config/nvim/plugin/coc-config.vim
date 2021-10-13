@@ -109,7 +109,8 @@ xmap <leader>c  <Plug>(coc-codeaction-selected)
 nmap <leader>c  <Plug>(coc-codeaction-selected)
 
 " Remap keys for applying codeAction to the current buffer.
-nmap <leader>cc  <Plug>(coc-codeaction)
+" nmap <leader>cc  <Plug>(coc-codeaction)
+nmap <leader>cc  <Plug>(coc-codeaction-cursor)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
 
