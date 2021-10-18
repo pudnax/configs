@@ -8,7 +8,7 @@ cmd("set shortmess+=c")
 vim.o.inccommand = "nosplit"
 
 --Set highlight on search
-vim.o.hlsearch = false
+vim.o.hlsearch = true
 vim.o.incsearch = true
 
 --Make line numbers default
@@ -61,7 +61,7 @@ vim.wo.signcolumn = "yes"
 --Set colorscheme (order is important here)
 vim.o.termguicolors = true
 vim.g.onedark_terminal_italics = 2
-vim.cmd([[colorscheme nord]])
+-- vim.cmd([[colorscheme nord]])
 
 --Remap space as leader key
 vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })

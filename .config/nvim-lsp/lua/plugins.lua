@@ -53,6 +53,20 @@ return require("packer").startup(function(use)
 		ft = { "rust", "rs" }, -- or you can not lazy load and remove this line
 	})
 
+	use({
+		"folke/trouble.nvim",
+		-- cmd = "TroubleToggle",
+		config = function()
+			local map = require("util").map
+			map("n", "<leader>tr", "<cmd>Trouble lsp_references<cr>")
+			map("n", "<leader>tf", "<cmd>Trouble lsp_definitions<cr>")
+			map("n", "<leader>tq", "<cmd>Trouble quickfix<cr>")
+			map("n", "<leader>tl", "<cmd>Trouble loclist<cr>")
+			map("n", "<leader>tw", "<cmd>Trouble lsp_document_diagnostics<cr>")
+			map("n", "<leader>tW", "<cmd>Trouble lsp_workspace_diagnostics<cr>")
+		end,
+	})
+
 	-- Fuzzy finder
 	use({ "nvim-lua/popup.nvim" })
 	use({ "nvim-lua/plenary.nvim" })
@@ -63,6 +77,9 @@ return require("packer").startup(function(use)
 			map("n", "<C-p>", '<cmd>lua require("telescope.builtin").find_files()<CR>')
 			map("n", "<leader>ff", '<cmd>lua require("telescope.builtin").grep_string()<CR>')
 			map("n", "<leader>fg", '<cmd>lua require("telescope.builtin").live_grep()<CR>')
+			map("n", "<leader>fg", '<cmd>lua require("telescope.builtin").live_grep()<CR>')
+			map("n", "<leader>ts", "<cmd>Telescope lsp_document_symbols<CR>")
+			map("n", "<leader>tS", "<cmd>Telescope lsp_workspace_symbols<CR>")
 			require("core.telescope").setup()
 		end,
 	})
@@ -381,25 +398,78 @@ return require("packer").startup(function(use)
 	})
 
 	use({
-		"folke/trouble.nvim",
-		cmd = "TroubleToggle",
-		config = function()
-			local map = require("util").map
-			map("n", "<leader>r", "<cmd>Trouble lsp_references<cr>")
-			map("n", "<leader>f", "<cmd>Trouble lsp_definitions<cr>")
-			map("n", "<leader>d", "<cmd>Trouble lsp_document_diagnostics<cr>")
-			map("n", "<leader>q", "<cmd>Trouble quickfix<cr>")
-			map("n", "<leader>l", "<cmd>Trouble loclist<cr>")
-			map("n", "<leader>w", "<cmd>Trouble lsp_workspace_diagnostics<cr>")
-		end,
-	})
-
-	use({
 		"simrat39/symbols-outline.nvim",
 		config = function()
 			vim.g.symbols_outline = { auto_preview = false, width = 13 }
 			local map = require("util").map
 			map("n", "<F8>", "<cmd>SymbolsOutline<CR>")
+		end,
+	})
+
+	-- use({
+	-- 	"mcchrish/zenbones.nvim",
+	-- 	requires = "rktjmp/lush.nvim",
+	-- 	config = function()
+	-- 		vim.cmd("colorscheme zenflesh")
+	-- 		vim.g.zenflesh_darkness = "warm"
+	-- 	end,
+	-- })
+
+	use({
+		"lewis6991/spellsitter.nvim",
+		config = function()
+			require("spellsitter").setup()
+		end,
+	})
+
+	use({
+		"sainnhe/gruvbox-material",
+		config = function()
+			vim.cmd("colorscheme gruvbox-material")
+		end,
+	})
+
+	use({
+		"hoob3rt/lualine.nvim",
+		requires = {
+			"kyazdani42/nvim-web-devicons",
+		},
+		config = function()
+			require("lualine").setup({
+				options = {
+					icons_enabled = true,
+					theme = "gruvbox_material",
+					section_separators = { "", "" },
+					component_separators = { "", "" },
+					disabled_filetypes = {},
+				},
+				sections = {
+					lualine_a = { "mode" },
+					lualine_b = { "branch" },
+					lualine_c = { "filename" },
+					lualine_x = {
+						{
+							"diagnostics",
+							sources = { "nvim_lsp" },
+							symbols = { error = " ", warn = " ", info = " ", hint = " " },
+						},
+						"encoding",
+						"filetype",
+					},
+					lualine_y = { "progress" },
+					lualine_z = { "location" },
+				},
+				inactive_sections = {
+					lualine_a = {},
+					lualine_b = {},
+					lualine_c = { "filename" },
+					lualine_x = { "location" },
+					lualine_y = {},
+					lualine_z = {},
+				},
+				tabline = {},
+				extensions = { "fugitive" },
+			})
 		end,
 	})
 end)

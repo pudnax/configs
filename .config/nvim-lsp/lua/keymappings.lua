@@ -7,9 +7,9 @@ map("n", "<C-s>", "<Cmd>w<CR>")
 map("n", "Y", "y$")
 
 map("i", "<C-j>", "<ESC>")
-map("n", "<C-j>", "<ESC>")
+map("v", "<C-j>", "<ESC>")
 map("i", "<C-k>", "<ESC>")
-map("n", "<C-k>", "<ESC>")
+map("v", "<C-k>", "<ESC>")
 
 -- Move current line / block with Alt-j/k a la vscode.
 map("n", "<A-j>", ":m .+1<CR>==")
@@ -23,6 +23,12 @@ map("n", "<C-q>", ":call QuickFixToggle()<CR>")
 map("n", "<leader>h", "<cmd>noh<CR>")
 
 map("v", "<leader>p", '"_dP')
+
+-- Better window movement
+map("n", "<C-h>", "<C-w>h")
+map("n", "<C-j>", "<C-w>j")
+map("n", "<C-k>", "<C-w>k")
+map("n", "<C-l>", "<C-w>l")
 
 -- Better indenting
 map("v", "<", "<gv")
@@ -47,7 +53,7 @@ vim.api.nvim_exec(
 map H ^
 map L $
 
-autocmd Filetype glsl,wgsl map <C-K> :pyf ~/bins/clang-format.py<cr>
+autocmd Filetype glsl,wgsl map <C-k> :pyf ~/bins/clang-format.py<cr>
 
 " Open new file adjacent to current file
 nnoremap <leader>w :e <C-R>=expand("%:p:h") . "/" <CR>
