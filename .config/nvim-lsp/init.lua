@@ -25,8 +25,8 @@ packer.init({
 })
 
 require("plugins")
-require("keymappings")
 require("settings")
+require("keymappings")
 require("autocommands")
 
 vim.cmd([[set shell=/bin/bash]])
