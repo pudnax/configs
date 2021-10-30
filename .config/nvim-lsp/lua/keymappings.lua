@@ -53,8 +53,6 @@ vim.api.nvim_exec(
 map H ^
 map L $
 
-autocmd Filetype glsl,wgsl map <C-k> :pyf ~/bins/clang-format.py<cr>
-
 " Open new file adjacent to current file
 nnoremap <leader>w :e <C-R>=expand("%:p:h") . "/" <CR>
 ]],

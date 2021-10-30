@@ -21,7 +21,21 @@ M.opts = {
 			-- rest of the opts are forwarded to telescope
 		},
 
+		debugables = {
+			use_telescope = true,
+		},
+
 		inlay_hints = {
+			-- Only show inlay hints for the current line
+			only_current_line = false,
+
+			-- Event which triggers a refersh of the inlay hints.
+			-- You can make this "CursorMoved" or "CursorMoved,CursorMovedI" but
+			-- not that this may cause  higher CPU usage.
+			-- This option is only respected when only_current_line and
+			-- autoSetHints both are true.
+			only_current_line_autocmd = "CursorHold",
+
 			-- wheter to show parameter hints with the inlay hints or not
 			-- default: true
 			show_parameter_hints = true,
@@ -62,6 +76,28 @@ M.opts = {
 				{ "╰", "FloatBorder" },
 				{ "│", "FloatBorder" },
 			},
+
+			-- whether the hover action window gets automatically focused
+			auto_focus = false,
+		},
+
+		-- settings for showing the crate graph based on graphviz and the dot
+		-- command
+		crate_graph = {
+			-- Backend used for displaying the graph
+			-- see: https://graphviz.org/docs/outputs/
+			-- default: x11
+			-- backend = "x11",
+
+			-- where to store the output, nil for no output stored (relative
+			-- path from pwd)
+			-- default: nil
+			-- output = nil,
+
+			-- true for all crates.io and external crates, false only the local
+			-- crates
+			-- default: true
+			full = false,
 		},
 	},
 

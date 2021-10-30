@@ -17,7 +17,13 @@ return require("packer").startup(function(use)
 		requires = {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-nvim-lua",
-			"L3MON4D3/LuaSnip",
+			{
+				"L3MON4D3/LuaSnip",
+				config = function()
+					require("luasnip.loaders.from_vscode").lazy_load()
+				end,
+				requires = { "rafamadriz/friendly-snippets" },
+			},
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-calc",
@@ -26,16 +32,10 @@ return require("packer").startup(function(use)
 		},
 		config = function()
 			require("core.cmp").setup()
-			require("nvim-autopairs.completion.cmp").setup({
-				map_cr = true, --  map <CR> on insert mode
-				map_complete = true, -- it will auto insert `(` (map_char) after select function or method item
-				auto_select = true, -- automatically select the first item
-				insert = false, -- use insert confirm behavior instead of replace
-				map_char = { -- modifies the function or method delimiter by filetypes
-					all = "(",
-					tex = "{",
-				},
-			})
+
+			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+			local cmp = require("cmp")
+			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 		end,
 	})
 
@@ -285,9 +285,12 @@ return require("packer").startup(function(use)
 	})
 
 	use({
-		"npxbr/glow.nvim",
+		"iamcco/markdown-preview.nvim",
+		run = "cd app && npm install",
+		setup = function()
+			vim.g.mkdp_filetypes = { "markdown" }
+		end,
 		ft = { "markdown" },
-		-- run = "yay -S glow"
 	})
 
 	use({ "oberblastmeister/neuron.nvim" })
@@ -407,7 +410,7 @@ return require("packer").startup(function(use)
 	-- 	requires = "rktjmp/lush.nvim",
 	-- 	config = function()
 	-- 		vim.cmd("colorscheme zenflesh")
-	-- 		vim.g.zenflesh_darkness = "warm"
+	-- 		vim.g.zenflesh_darkness = "stark"
 	-- 	end,
 	-- })
 
@@ -426,46 +429,53 @@ return require("packer").startup(function(use)
 	})
 
 	use({
-		"hoob3rt/lualine.nvim",
-		requires = {
-			"kyazdani42/nvim-web-devicons",
-		},
-		config = function()
-			require("lualine").setup({
-				options = {
-					icons_enabled = true,
-					theme = "gruvbox_material",
-					section_separators = { "", "" },
-					component_separators = { "", "" },
-					disabled_filetypes = {},
-				},
-				sections = {
-					lualine_a = { "mode" },
-					lualine_b = { "branch" },
-					lualine_c = { "filename" },
-					lualine_x = {
-						{
-							"diagnostics",
-							sources = { "nvim_lsp" },
-							symbols = { error = " ", warn = " ", info = " ", hint = " " },
-						},
-						"encoding",
-						"filetype",
+		{
+			"nvim-lualine/lualine.nvim",
+			requires = {
+				"kyazdani42/nvim-web-devicons",
+			},
+			config = function()
+				require("lualine").setup({
+					options = {
+						icons_enabled = true,
+						-- theme = "gruvbox_material",
+						section_separators = { "", "" },
+						component_separators = { "", "" },
+						disabled_filetypes = {},
 					},
-					lualine_y = { "progress" },
-					lualine_z = { "location" },
-				},
-				inactive_sections = {
-					lualine_a = {},
-					lualine_b = {},
-					lualine_c = { "filename" },
-					lualine_x = { "location" },
-					lualine_y = {},
-					lualine_z = {},
-				},
-				tabline = {},
-				extensions = { "fugitive" },
-			})
-		end,
+					sections = {
+						lualine_a = { "mode" },
+						lualine_b = { "branch" },
+						lualine_c = { "filename" },
+						lualine_d = {
+							{
+								"lsp_progress",
+								display_components = { "lsp_client_name", { "title", "percentage", "message" } },
+							},
+							"filetype",
+							"encoding",
+							"fileformat",
+						},
+						lualine_x = {
+							{
+								"diagnostics",
+								sources = { "nvim_lsp" },
+								symbols = { error = " ", warn = " ", info = " ", hint = " " },
+							},
+							"encoding",
+							"filetype",
+						},
+						lualine_y = { "progress" },
+						lualine_z = { "location" },
+					},
+					tabline = {},
+					extensions = { "fugitive", "nvim-tree", "quickfix" },
+				})
+			end,
+		},
+		{
+			"arkav/lualine-lsp-progress",
+			-- after = "lualine.nvim",
+		},
 	})
 end)

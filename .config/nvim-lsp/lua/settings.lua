@@ -104,7 +104,7 @@ vim.o.visualbell = false
 vim.o.splitbelow = true
 vim.o.splitright = true
 vim.bo.synmaxcol = 500
-vim.wo.colorcolumn = "80"
+vim.wo.colorcolumn = "100"
 vim.o.cmdheight = 2
 
 -- AutoTrip whitespaces

@@ -23,11 +23,14 @@ M.opts = {
 		["<C-d>"] = cmp.mapping.scroll_docs(-4),
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
 		["<C-Space>"] = cmp.mapping.complete(),
-		["<C-e>"] = cmp.mapping.close(),
-		-- ["<CR>"] = cmp.mapping.confirm({
-		-- 	behavior = cmp.ConfirmBehavior.Insert,
-		-- 	select = true,
-		-- }),
+		["<C-e>"] = cmp.mapping({
+			i = cmp.mapping.abort(),
+			c = cmp.mapping.close(),
+		}),
+		["<CR>"] = cmp.mapping.confirm({
+			behavior = cmp.ConfirmBehavior.Replace,
+			select = true,
+		}),
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
@@ -58,7 +61,7 @@ M.opts = {
 	},
 
 	-- Installed sources
-	sources = {
+	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lua" },
 		{ name = "luasnip" },
@@ -68,11 +71,26 @@ M.opts = {
 		{ name = "treesitter" },
 
 		{ name = "crates" },
-	},
+	}),
 }
 
 M.setup = function()
 	cmp.setup(M.opts)
+	-- Use buffer source for `/`.
+	cmp.setup.cmdline("/", {
+		sources = {
+			{ name = "buffer" },
+		},
+	})
+
+	-- Use cmdline & path source for ':'.
+	cmp.setup.cmdline(":", {
+		sources = cmp.config.sources({
+			{ name = "path" },
+		}, {
+			{ name = "cmdline" },
+		}),
+	})
 end
 
 return M
