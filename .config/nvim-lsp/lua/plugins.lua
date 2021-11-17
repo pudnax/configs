@@ -28,7 +28,7 @@ return require("packer").startup(function(use)
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-calc",
 			"saadparwaiz1/cmp_luasnip",
-			"hrsh7th/cmp-latex-symbols",
+			-- "hrsh7th/cmp-latex-symbols",
 		},
 		config = function()
 			require("core.cmp").setup()
@@ -178,7 +178,7 @@ return require("packer").startup(function(use)
 		end,
 	})
 	-- Additional textobjects for treesitter
-	use({ "nvim-treesitter/nvim-treesitter-textobjects" })
+	-- use({ "nvim-treesitter/nvim-treesitter-textobjects" })
 
 	-- File tree
 	use({
@@ -398,6 +398,7 @@ return require("packer").startup(function(use)
 
 	use({
 		"simrat39/symbols-outline.nvim",
+		cmd = "SymbolsOutline",
 		config = function()
 			vim.g.symbols_outline = { auto_preview = false, width = 13 }
 			local map = require("util").map
@@ -428,54 +429,48 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+	use("arkav/lualine-lsp-progress")
+
 	use({
-		{
-			"nvim-lualine/lualine.nvim",
-			requires = {
-				"kyazdani42/nvim-web-devicons",
-			},
-			config = function()
-				require("lualine").setup({
-					options = {
-						icons_enabled = true,
-						-- theme = "gruvbox_material",
-						section_separators = { "", "" },
-						component_separators = { "", "" },
-						disabled_filetypes = {},
-					},
-					sections = {
-						lualine_a = { "mode" },
-						lualine_b = { "branch" },
-						lualine_c = { "filename" },
-						lualine_d = {
-							{
-								"lsp_progress",
-								display_components = { "lsp_client_name", { "title", "percentage", "message" } },
-							},
-							"filetype",
-							"encoding",
-							"fileformat",
-						},
-						lualine_x = {
-							{
-								"diagnostics",
-								sources = { "nvim_lsp" },
-								symbols = { error = " ", warn = " ", info = " ", hint = " " },
-							},
-							"encoding",
-							"filetype",
-						},
-						lualine_y = { "progress" },
-						lualine_z = { "location" },
-					},
-					tabline = {},
-					extensions = { "fugitive", "nvim-tree", "quickfix" },
-				})
-			end,
+		"nvim-lualine/lualine.nvim",
+		requires = {
+			"kyazdani42/nvim-web-devicons",
 		},
-		{
-			"arkav/lualine-lsp-progress",
-			-- after = "lualine.nvim",
-		},
+		config = function()
+			require("lualine").setup({
+				options = {
+					icons_enabled = true,
+					-- theme = "gruvbox_material",
+					section_separators = { "", "" },
+					component_separators = { "", "" },
+					disabled_filetypes = {},
+				},
+				sections = {
+					lualine_a = { "mode" },
+					lualine_b = { "branch" },
+					lualine_c = {
+						"filename",
+						{
+							"lsp_progress",
+							display_components = { "lsp_client_name", { "title", "percentage", "message" } },
+						},
+						"fileformat",
+					},
+					lualine_x = {
+						{
+							"diagnostics",
+							sources = { "nvim_lsp" },
+							symbols = { error = " ", warn = " ", info = " ", hint = " " },
+						},
+						"encoding",
+						"filetype",
+					},
+					lualine_y = { "progress" },
+					lualine_z = { "location" },
+				},
+				tabline = {},
+				extensions = { "fugitive", "nvim-tree", "quickfix" },
+			})
+		end,
 	})
 end)
