@@ -41,6 +41,8 @@ local server_names = {
 	"texlab",
 	"gopls",
 	"jsonls",
+	"tsserver",
+	"eslint",
 }
 
 local lsp_installer_servers = require("nvim-lsp-installer.servers")

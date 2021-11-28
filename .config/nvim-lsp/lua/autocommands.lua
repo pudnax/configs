@@ -1,8 +1,8 @@
 vim.cmd([[
     autocmd Filetype glsl,wgsl nnoremap <C-k> <cmd>pyf ~/bins/clang-format.py<cr>
 
-    autocmd Filetype c,cpp nnoremap <leader>m <cmd>lua require('core.terminal').exec_toggle('make ;read')<CR>
-    autocmd Filetype c,cpp nnoremap <leader>r <cmd>lua require('core.terminal').exec_toggle('make run;read')<CR>
+    autocmd Filetype c,cpp nnoremap <leader>m <cmd>lua require('core.terminal').exec_toggle('make -B;read')<CR>
+    autocmd Filetype c,cpp nnoremap <leader>r <cmd>lua require('core.terminal').exec_toggle('make -B && make -B run;read')<CR>
     autocmd Filetype c,cpp nnoremap <leader>H <Cmd>ClangdSwitchSourceHeader<CR>
 
     autocmd Filetype java nnoremap <leader>r <cmd>lua require('toggleterm.terminal').Terminal:new {cmd='mvn package;read', hidden =false}:toggle()<CR>

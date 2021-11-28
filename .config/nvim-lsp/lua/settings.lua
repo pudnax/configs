@@ -69,8 +69,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 --Ident
-vim.bo.shiftwidth = 4
-vim.bo.softtabstop = 4
+vim.bo.shiftwidth = 8
+vim.bo.softtabstop = 0
 vim.bo.tabstop = 4
 vim.bo.expandtab = true
 vim.o.smarttab = true

@@ -9,7 +9,7 @@ M.opts = {
 		enable = true,
 	},
 	diagnostics = {
-		enable = true,
+		enable = false,
 		icons = {
 			hint = "",
 			info = "",
@@ -67,8 +67,8 @@ M.opts = {
 }
 
 M.setup = function()
-	local nvim_tree_config = require("nvim-tree.config")
-	require("nvim-tree").setup(M.opts)
+	local nvim_tree_config = require("nvim-tree")
+	nvim_tree_config.setup(M.opts)
 end
 
 return M

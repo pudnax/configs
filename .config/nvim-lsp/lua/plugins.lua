@@ -197,7 +197,7 @@ return require("packer").startup(function(use)
 				[[
                 augroup FormatAutogroup
                   autocmd!
-                  autocmd BufWritePost *.js,*.lua,*.c,*.cpp,*.h,*.hpp, FormatWrite
+                  autocmd BufWritePost *.lua,*.cpp FormatWrite
                 augroup END
                 ]],
 				true
@@ -398,7 +398,6 @@ return require("packer").startup(function(use)
 
 	use({
 		"simrat39/symbols-outline.nvim",
-		cmd = "SymbolsOutline",
 		config = function()
 			vim.g.symbols_outline = { auto_preview = false, width = 13 }
 			local map = require("util").map
@@ -410,8 +409,9 @@ return require("packer").startup(function(use)
 	-- 	"mcchrish/zenbones.nvim",
 	-- 	requires = "rktjmp/lush.nvim",
 	-- 	config = function()
-	-- 		vim.cmd("colorscheme zenflesh")
-	-- 		vim.g.zenflesh_darkness = "stark"
+	-- 		vim.cmd("colorscheme zenbones")
+	-- 		vim.cmd("set background=dark")
+	-- 		vim.g.zenflesh_darkness = "default"
 	-- 	end,
 	-- })
 
