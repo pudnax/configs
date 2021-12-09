@@ -399,7 +399,7 @@ return require("packer").startup(function(use)
 	use({
 		"simrat39/symbols-outline.nvim",
 		config = function()
-			vim.g.symbols_outline = { auto_preview = false, width = 13 }
+			vim.g.symbols_outline = { auto_preview = false }
 			local map = require("util").map
 			map("n", "<F8>", "<cmd>SymbolsOutline<CR>")
 		end,

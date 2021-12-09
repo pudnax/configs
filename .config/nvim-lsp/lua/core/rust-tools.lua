@@ -120,9 +120,9 @@ M.opts = {
 				cargo = {
 					loadOutDirFromCheck = true,
 				},
-				procMacro = {
-					enbale = true,
-				},
+				-- procMacro = {
+				-- 	enbale = true,
+				-- },
 				checkOnSave = {
 					command = "clippy",
 				},

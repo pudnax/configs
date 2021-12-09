@@ -1,5 +1,6 @@
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+
 if fn.empty(fn.glob(install_path)) > 0 then
 	packer_bootstrap = fn.system({
 		"git",
@@ -42,7 +43,8 @@ local server_names = {
 	"gopls",
 	"jsonls",
 	"tsserver",
-	"eslint",
+	-- "eslint",
+	-- "omnisharp",
 }
 
 local lsp_installer_servers = require("nvim-lsp-installer.servers")
@@ -61,6 +63,25 @@ for _, name in ipairs(server_names) do
 		-- vim.cmd([[]])
 	end
 end
+
+local lspconfig = require("lspconfig")
+local configs = require("lspconfig.configs")
+
+if not configs.wgsl_analyzer then
+	configs.wgsl_analyzer = {
+		default_config = {
+			cmd = { vim.fn.expand("$HOME") .. "/.cargo/bin/wgsl_analyzer" },
+			filetypes = { "wgsl" },
+			root_dir = lspconfig.util.root_pattern(".git", "wgsl"),
+			settings = {},
+		},
+	}
+end
+
+lspconfig.wgsl_analyzer.setup({
+	on_attach = lsp_opts.on_attach,
+	capabilities = lsp_opts.capabilities,
+})
 
 local sumneko_root_path = vim.fn.stdpath("data") .. "/lsp_servers/sumneko_lua/extension/server"
 local sumneko_binary = sumneko_root_path .. "/bin/Linux/lua-language-server"
