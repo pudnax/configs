@@ -3,7 +3,7 @@ local tree_cb = require("nvim-tree.config").nvim_tree_callback
 
 M.opts = {
 	open_on_setup = false,
-	auto_close = true,
+	-- auto_close = true,
 	open_on_tab = false,
 	update_focused_file = {
 		enable = true,

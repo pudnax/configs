@@ -1,5 +1,6 @@
 vim.cmd([[
-    autocmd Filetype glsl,wgsl nnoremap <C-k> <cmd>pyf ~/bins/clang-format.py<cr>
+    autocmd Filetype glsl,wgsl nnoremap <C-f> <cmd>pyf ~/bins/clang-format.py<cr>
+    autocmd Filetype wgsl set tabstop=4 shiftwidth=4
 
     autocmd Filetype c,cpp nnoremap <leader>m <cmd>lua require('core.terminal').exec_toggle('make -B;read')<CR>
     autocmd Filetype c,cpp nnoremap <leader>r <cmd>lua require('core.terminal').exec_toggle('make -B && make -B run;read')<CR>
@@ -13,6 +14,7 @@ vim.cmd([[
 
     autocmd Filetype rust nnoremap <leader>m <cmd>lua require('core.terminal').exec_toggle('cargo build;read')<CR>
     autocmd Filetype rust nnoremap <leader>r <cmd>lua require('core.terminal').exec_toggle('cargo run;read')<CR>
+    autocmd Filetype rust nnoremap <leader>R <cmd>lua require('core.terminal').exec_toggle('cargo run --release;read')<CR>
     autocmd Filetype rust nnoremap <leader>t <cmd>lua require('core.terminal').exec_toggle('cargo test;read')<CR>
     autocmd Filetype rust nnoremap <leader>H <cmd>lua require('core.terminal').exec_toggle('cargo clippy;read')<CR>
     autocmd Filetype rust nnoremap <leader>lm <Cmd>RustExpandMacro<CR>

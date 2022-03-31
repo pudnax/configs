@@ -110,6 +110,10 @@ M.opts = {
 		capabilities = require("core.lsp_opts").capabilities,
 		settings = {
 			["rust-analyzer"] = {
+				inlay_hints  = {
+					closureReturnTypeHints = true
+				},
+
 				assits = {
 					importMergeBehaviour = "last",
 					importPrefix = "by_self",
@@ -123,9 +127,9 @@ M.opts = {
 				-- procMacro = {
 				-- 	enbale = true,
 				-- },
-				checkOnSave = {
-					command = "clippy",
-				},
+				-- checkOnSave = {
+				-- 	command = "clippy",
+				-- },
 			},
 		},
 	}, -- rust-analyser options

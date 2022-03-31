@@ -45,7 +45,7 @@ vim.o.printoptions = "paper:letter"
 vim.o.joinspaces = false
 
 --Enable break indent
-vim.o.breakindent = true
+-- vim.o.breakindent = true
 
 --Save undo history
 vim.opt.undofile = true
@@ -69,21 +69,25 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 --Ident
+vim.api.nvim_exec([[filetype plugin indent on]], false)
 vim.bo.shiftwidth = 4
 vim.bo.softtabstop = 0
 vim.bo.tabstop = 4
 vim.bo.expandtab = true
 vim.o.smarttab = true
+-- vim.g.shiftround = true -- Round indent to multiple of 'shiftwidth'
+-- vim.bo.smartindent = true -- Do smart indenting when starting a new line
+-- vim.bo.autoindent = true -- Copy indent from current line, over to the new line
 
 -- Highlight on yank
 vim.api.nvim_exec(
-	[[
+[[
   augroup YankHighlight
     autocmd!
     autocmd TextYankPost * silent! lua vim.highlight.on_yank()
   augroup end
 ]],
-	false
+    false
 )
 
 -- UI
@@ -109,7 +113,7 @@ vim.o.cmdheight = 2
 
 -- AutoTrip whitespaces
 vim.api.nvim_exec(
-	[[
+[[
     fun! TrimWhitespace()
         let l:save = winsaveview()
         keeppatterns %s/\s\+$//e
@@ -126,5 +130,5 @@ vim.api.nvim_exec(
 
     autocmd FileType lua,go,rust,c,c++,html,typescript,javascript,python autocmd BufWritePre <buffer> call TrimWhitespace()
 ]],
-	false
+    false
 )

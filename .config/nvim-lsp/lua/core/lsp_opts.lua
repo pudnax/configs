@@ -4,8 +4,8 @@ M.on_attach = function(_, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
 	local opts = { noremap = true, silent = true }
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "E", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "W", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "E", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "W", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
@@ -40,20 +40,8 @@ M.on_attach = function(_, bufnr)
 		[[<cmd>lua require('telescope.builtin').lsp_workspace_symbols()<CR>]],
 		opts
 	)
-	vim.api.nvim_buf_set_keymap(
-		bufnr,
-		"n",
-		"gw",
-		[[<cmd>lua require('telescope.builtin').lsp_document_diagnostics()<CR>]],
-		opts
-	)
-	vim.api.nvim_buf_set_keymap(
-		bufnr,
-		"n",
-		"gW",
-		[[<cmd>lua require('telescope.builtin').lsp_workspace_diagnostics()<CR>]],
-		opts
-	)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "gw", [[<cmd>Telescope diagnostics bufnr=0<CR>]], opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "gW", [[<cmd>Telescope diagnostics<CR>]], opts)
 	vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
 	vim.api.nvim_command([[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]])
 end
