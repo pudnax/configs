@@ -81,13 +81,13 @@ vim.o.smarttab = true
 
 -- Highlight on yank
 vim.api.nvim_exec(
-    [[
+	[[
   augroup YankHighlight
     autocmd!
     autocmd TextYankPost * silent! lua vim.highlight.on_yank()
   augroup end
-]]   ,
-    false
+]],
+	false
 )
 
 -- UI
@@ -111,17 +111,25 @@ vim.bo.synmaxcol = 500
 vim.wo.colorcolumn = "100"
 vim.o.cmdheight = 2
 
--- local colors = require("gruvbox-baby.colors").config()
--- vim.g.gruvbox_baby_highlights = { Normal = { fg = colors.pink } }
--- vim.g.gruvbox_baby_highlights = { Normal = { fg = "#123123", bg = "NONE", style = "underline" } }
--- vim.g.gruvbox_baby_telescope_theme = 1
--- vim.g.gruvbox_baby_transparent_mode = 1
+local colors = require("gruvbox-baby.colors").config()
+local config = require("gruvbox-baby.config")
+vim.g.gruvbox_baby_highlights = {
+	Number = { fg = colors.pink },
+	Float = { fg = colors.pink },
+	Function = { fg = "#76ad61" },
+	Type = { fg = colors.soft_yellow },
+	Boolean = { fg = colors.pink },
+	Include = { fg = "#ff8333" },
+	Keyword = { fg = "#e35e3d", style = config.keyword_style },
+	Label = { fg = colors.pink },
+	StorageClass = { fg = "#ff8333" },
+}
 vim.g.gruvbox_baby_background = "medium"
 vim.cmd([[colorscheme gruvbox-baby]])
 
 -- AutoTrip whitespaces
 vim.api.nvim_exec(
-    [[
+	[[
     fun! TrimWhitespace()
         let l:save = winsaveview()
         keeppatterns %s/\s\+$//e
@@ -137,6 +145,6 @@ vim.api.nvim_exec(
     endfunction
 
     autocmd FileType lua,go,rust,c,c++,html,typescript,javascript,python autocmd BufWritePre <buffer> call TrimWhitespace()
-]]   ,
-    false
+]],
+	false
 )
