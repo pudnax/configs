@@ -49,12 +49,12 @@ map("n", "<leader><leader>", "<C-^>")
 map("n", "<leader>,", "<Cmd>set invlist<cr>")
 
 vim.api.nvim_exec(
-[[
+	[[
 map H ^
 map L $
 
 " Open new file adjacent to current file
 nnoremap <leader>w :e <C-R>=expand("%:p:h") . "/" <CR>
 ]],
-    false
+	false
 )

@@ -110,25 +110,30 @@ M.opts = {
 		capabilities = require("core.lsp_opts").capabilities,
 		settings = {
 			["rust-analyzer"] = {
-				inlay_hints  = {
-					closureReturnTypeHints = true
+				inlay_hints = {
+					closureReturnTypeHints = true,
 				},
 
 				assits = {
-					importMergeBehaviour = "last",
+					-- importMergeBehaviour = "last",
 					importPrefix = "by_self",
+					expressionFillDefault = "default",
 				},
 				diagnostics = {
-					disabled = { "unresolved-import" },
+					-- disabled = { "unresolved-import" },
+					experimantal = {
+						enable = true,
+					},
 				},
-				cargo = {
-					loadOutDirFromCheck = true,
-				},
+				-- cargo = {
+				-- 	loadOutDirFromCheck = true,
+				-- },
 				-- procMacro = {
 				-- 	enbale = true,
 				-- },
 				-- checkOnSave = {
-				-- 	command = "clippy",
+				-- enable = false,
+				-- command = "clippy",
 				-- },
 			},
 		},
