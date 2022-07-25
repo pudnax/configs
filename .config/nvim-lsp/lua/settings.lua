@@ -111,21 +111,39 @@ vim.bo.synmaxcol = 500
 vim.wo.colorcolumn = "100"
 vim.o.cmdheight = 2
 
-local colors = require("gruvbox-baby.colors").config()
-local config = require("gruvbox-baby.config")
-vim.g.gruvbox_baby_highlights = {
-	Number = { fg = colors.pink },
-	Float = { fg = colors.pink },
-	Function = { fg = "#76ad61" },
-	Type = { fg = colors.soft_yellow },
-	Boolean = { fg = colors.pink },
-	Include = { fg = "#ff8333" },
-	Keyword = { fg = "#e35e3d", style = config.keyword_style },
-	Label = { fg = colors.pink },
-	StorageClass = { fg = "#ff8333" },
+-- local colors = require("gruvbox-baby.colors").config()
+-- local config = require("gruvbox-baby.config")
+-- vim.g.gruvbox_baby_highlights = {
+-- 	Number = { fg = colors.pink },
+-- 	Float = { fg = colors.pink },
+-- 	Function = { fg = "#76ad61" },
+-- 	Type = { fg = colors.soft_yellow },
+-- 	Boolean = { fg = colors.pink },
+-- 	Include = { fg = "#ff8333" },
+-- 	Keyword = { fg = "#e35e3d", style = config.keyword_style },
+
+-- 	Operator = { fg = colors.foreground },
+-- 	TSOperator = { fg = "#ff8333" },
+
+-- 	TSParameter = { fg = colors.milk, style = "nocombine" },
+-- 	TSField = { fg = colors.milk },
+-- 	TSTypeBuiltin = { fg = colors.soft_yellow },
+-- 	TSLabel = { fg = colors.soft_yellow }, -- 'static
+
+-- 	TSProperty = { fg = colors.pink },
+-- 	TSStructure = { fg = colors.light_blue },
+-- }
+-- vim.g.gruvbox_baby_background = "medium"
+-- vim.cmd([[colorscheme gruvbox-baby]])
+
+-- vim.cmd("colorscheme zenwritten")
+-- vim.cmd("set background=warm")
+-- vim.g.zenbones_darkness = "warm"
+
+require('onedark').setup {
+    style = 'warmer'
 }
-vim.g.gruvbox_baby_background = "medium"
-vim.cmd([[colorscheme gruvbox-baby]])
+require('onedark').load()
 
 -- AutoTrip whitespaces
 vim.api.nvim_exec(

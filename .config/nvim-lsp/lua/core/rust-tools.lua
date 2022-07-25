@@ -105,7 +105,7 @@ M.opts = {
 	-- these override the defaults set by rust-tools.nvim
 	-- see https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#rust_analyzer
 	server = {
-		cmd = { vim.fn.stdpath("data") .. "/lsp_servers/rust/rust-analyzer" },
+		cmd = { vim.fn.stdpath("data") .. "/mson/bin/rust-analyzer" },
 		on_attach = require("core.lsp_opts").on_attach,
 		capabilities = require("core.lsp_opts").capabilities,
 		settings = {
@@ -120,17 +120,17 @@ M.opts = {
 					expressionFillDefault = "default",
 				},
 				diagnostics = {
-					-- disabled = { "unresolved-import" },
-					experimantal = {
-						enable = true,
-					},
+					disabled = { "unresolved-import" },
+					-- experimental = {
+					-- 	enable = true,
+					-- },
 				},
-				-- cargo = {
-				-- 	loadOutDirFromCheck = true,
-				-- },
-				-- procMacro = {
-				-- 	enbale = true,
-				-- },
+				cargo = {
+					loadOutDirFromCheck = true,
+				},
+				procMacro = {
+					enbale = true,
+				},
 				-- checkOnSave = {
 				-- enable = false,
 				-- command = "clippy",
