@@ -1,6 +1,6 @@
 vim.cmd([[
     autocmd Filetype glsl,wgsl nnoremap <C-f> <cmd>pyf ~/bins/clang-format.py<cr>
-    autocmd Filetype wgsl,c,cpp,glsl,js,java,lua set tabstop=4 shiftwidth=4
+    autocmd Filetype wgsl,c,cpp,glsl,javascript,typescript,java,lua set tabstop=4 shiftwidth=4
 
     autocmd Filetype c,cpp nnoremap <leader>m <cmd>lua require('core.terminal').exec_toggle('make -B;read')<CR>
     autocmd Filetype c,cpp nnoremap <leader>r <cmd>lua require('core.terminal').exec_toggle('make -B && make -B run;read')<CR>

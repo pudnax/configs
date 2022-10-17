@@ -36,35 +36,7 @@ vim.cmd([[set shell=/bin/bash]])
 
 local lsp_opts = require("core.lsp_opts")
 
--- local server_names = {
---     "clangd",
---     "pyright",
---     "cmake",
---     "zls",
---     "texlab",
---     "gopls",
---     "jsonls",
---     "tsserver",
---     -- "eslint",
---     -- "omnisharp",
--- }
-
--- local lsp_installer_servers = require("nvim-lsp-installer.servers")
-
--- for _, name in ipairs(server_names) do
---     local ok, server = lsp_installer_servers.get_server(name)
---     if ok then
---         if not server:is_installed() then
---             server:install()
---         end
---         local opts = {
---             on_attach = lsp_opts.on_attach,
---             capabilities = lsp_opts.capabilities,
---         }
---         server:setup(opts)
---         -- vim.cmd([[]])
---     end
--- end
+require("impatient")
 
 require("mason").setup({
 	ui = {
@@ -73,23 +45,48 @@ require("mason").setup({
 		},
 	},
 })
+
+local lsp_list = {
+	"sumneko_lua",
+	"clangd",
+	"pyright",
+	"cmake",
+	"zls",
+	"texlab",
+	"gopls",
+	"jsonls",
+	"tsserver",
+	"rust_analyzer",
+}
 require("mason-lspconfig").setup({
-	ensure_installed = {
-		"sumneko_lua",
-		"clangd",
-		"pyright",
-		"cmake",
-		"zls",
-		"texlab",
-		"gopls",
-		"jsonls",
-		"tsserver",
-		"rust_analyzer",
-	},
+	ensure_installed = lsp_list,
 })
 
 local lspconfig = require("lspconfig")
 local configs = require("lspconfig.configs")
+
+local lsp_list_attach = {
+	"sumneko_lua",
+	"clangd",
+	"pyright",
+	"cmake",
+	"zls",
+	"texlab",
+	"gopls",
+	"jsonls",
+	"tsserver",
+}
+for i, lsp in pairs(lsp_list_attach) do
+	require("lspconfig")[lsp].setup({
+		on_attach = lsp_opts.on_attach,
+		capabilities = lsp_opts.capabilities,
+	})
+end
+
+-- local rt = require("rust-tools")
+-- local rs_opts = require("core.rust-tools")
+
+-- rt.setup(rs_opts.opts)
 
 if not configs.wgsl_analyzer then
 	configs.wgsl_analyzer = {
@@ -108,45 +105,11 @@ lspconfig.wgsl_analyzer.setup({
 	capabilities = lsp_opts.capabilities,
 })
 
--- local sumneko_root_path = vim.fn.stdpath("data") .. "/lsp_servers/sumneko_lua/extension/server"
--- local sumneko_binary = sumneko_root_path .. "/bin/lua-language-server"
-
--- -- Make runtime files discoverable to the server
--- local runtime_path = vim.split(package.path, ";")
--- table.insert(runtime_path, "lua/?.lua")
--- table.insert(runtime_path, "lua/?/init.lua")
-
--- require("lspconfig").sumneko_lua.setup({
---     cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
---     on_attach = lsp_opts.on_attach,
---     capabilities = lsp_opts.capabilities,
---     settings = {
---         Lua = {
---             runtime = {
---                 -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
---                 version = "LuaJIT",
---                 -- Setup your lua path
---                 path = runtime_path,
---             },
---             diagnostics = {
---                 -- Get the language server to recognize the `vim` global
---                 globals = { "vim" },
---             },
---             workspace = {
---                 -- Make the server aware of Neovim runtime files
---                 library = vim.api.nvim_get_runtime_file("", true),
---             },
---             -- Do not send telemetry data containing a randomized but unique identifier
---             telemetry = {
---                 enable = false,
---             },
---         },
---     },
--- })
-
 vim.api.nvim_exec([[filetype plugin indent on]], false)
 vim.bo.shiftwidth = 4
 vim.bo.softtabstop = 0
 vim.bo.tabstop = 4
 vim.bo.expandtab = true
 vim.o.smarttab = true
+
+require("luasnip.loaders.from_vscode").lazy_load()
