@@ -85,7 +85,13 @@ keymap("n", "gpi", "<Cmd>lua require('goto-preview').goto_preview_implementation
 keymap("n", "gP", "<Cmd>lua require('goto-preview').close_all_win()<CR>", opts)
 
 -- Commentary
-keymap("n", "<leader>/", "gcc<CR>", opts)
+local api = require("Comment.api")
+keymap("n", "<leader>/", api.toggle.linewise.current, opts)
+local esc = vim.api.nvim_replace_termcodes("<ESC>", true, false, true)
+keymap("x", "<leader>/", function()
+	vim.api.nvim_feedkeys(esc, "nx", false)
+	api.toggle.linewise(vim.fn.visualmode())
+end)
 
 -- Trouble
 keymap("n", "tr", "<cmd>Trouble lsp_references<cr>", opts)
