@@ -66,7 +66,6 @@ return packer.startup(function(use)
 	use({ "kevinhwang91/nvim-bqf" })
 	use({ "kylechui/nvim-surround" })
 	use({ "tikhomirov/vim-glsl" })
-	use({ "andweeb/presence.nvim" })
 
 	-- cmp plugins
 	use({ "hrsh7th/nvim-cmp" }) -- The completion plugin

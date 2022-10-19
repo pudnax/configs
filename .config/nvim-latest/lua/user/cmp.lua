@@ -119,6 +119,7 @@ cmp.setup({
 		{ name = "buffer" },
 		{ name = "path" },
 		{ name = "buffer" },
+		{ name = "spell" },
 		{ name = "calc" },
 		{ name = "treesitter" },
 		{ name = "crates" },

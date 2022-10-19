@@ -23,7 +23,7 @@ null_ls.setup({
 			extra_filetypes = { "glsl" },
 		}),
 
-		null_ls.builtins.completion.spell,
+		-- null_ls.builtins.completion.spell,
 	},
 	on_attach = require("user.lsp.handlers").on_attach,
 })
