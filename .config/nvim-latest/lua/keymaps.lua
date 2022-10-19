@@ -112,14 +112,6 @@ keymap("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", opts)
 keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
 keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
 
--- Dial
-keymap("n", "<C-a>", require("dial.map").inc_normal(), { noremap = true })
-keymap("n", "<C-x>", require("dial.map").dec_normal(), { noremap = true })
-keymap("v", "<C-a>", require("dial.map").inc_visual(), { noremap = true })
-keymap("v", "<C-x>", require("dial.map").dec_visual(), { noremap = true })
-keymap("v", "g<C-a>", require("dial.map").inc_gvisual(), { noremap = true })
-keymap("v", "g<C-x>", require("dial.map").dec_gvisual(), { noremap = true })
-
 -- Fugitive
 keymap("n", "<leader>gh", "<cmd>diffget //3<CR>", opts)
 keymap("n", "<leader>gf", "<cmd>diffget //2<CR>", opts)

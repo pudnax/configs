@@ -3,9 +3,9 @@ if not status_ok then
 	return
 end
 
-local extension_path = vim.fn.stdpath("data") .. "/codelldb"
+local extension_path = vim.fn.stdpath("data") .. "/mason/packages/codelldb/extension/"
 local codelldb_path = extension_path .. "adapter/codelldb"
-local liblldb_path = extension_path .. "extension/lldb/lib/liblldb.so"
+local liblldb_path = extension_path .. "lldb/lib/liblldb.so"
 
 rust_tools.setup({
 	tools = {
@@ -29,10 +29,6 @@ rust_tools.setup({
 			-- default: true
 			full = false,
 		},
-
-		dap = {
-			adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path),
-		},
 	},
 
 	-- all the opts to send to nvim-lspconfig
@@ -40,7 +36,13 @@ rust_tools.setup({
 	-- see https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#rust_analyzer
 	server = {
 		cmd = { vim.fn.stdpath("data") .. "/mason/bin/rust-analyzer" },
-		on_attach = require("user.lsp.handlers").on_attach,
+		on_attach = function(client, bufnr)
+			require("user.lsp.handlers").on_attach(client, bufnr)
+			-- Hover actions
+			vim.keymap.set("n", "K", rust_tools.hover_actions.hover_actions, { buffer = bufnr })
+			-- Code action groups
+			vim.keymap.set("n", "<Leader>a", rust_tools.code_action_group.code_action_group, { buffer = bufnr })
+		end,
 		capabilities = require("user.lsp.handlers").capabilities,
 		settings = {
 			["rust-analyzer"] = {
@@ -72,6 +74,10 @@ rust_tools.setup({
 			},
 		},
 	}, -- rust-analyser options
+
+	dap = {
+		adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path),
+	},
 })
 
 require("crates").setup()

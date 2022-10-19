@@ -22,7 +22,8 @@ null_ls.setup({
 		formatting.clang_format.with({
 			extra_filetypes = { "glsl" },
 		}),
-		diagnostics.flake8,
+
+		null_ls.builtins.completion.spell,
 	},
 	on_attach = require("user.lsp.handlers").on_attach,
 })

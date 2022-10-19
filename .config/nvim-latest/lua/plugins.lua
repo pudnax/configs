@@ -65,8 +65,8 @@ return packer.startup(function(use)
 	use({ "nacro90/numb.nvim" })
 	use({ "kevinhwang91/nvim-bqf" })
 	use({ "kylechui/nvim-surround" })
-	use({ "monaqa/dial.nvim" })
 	use({ "tikhomirov/vim-glsl" })
+	use({ "andweeb/presence.nvim" })
 
 	-- cmp plugins
 	use({ "hrsh7th/nvim-cmp" }) -- The completion plugin
@@ -112,6 +112,7 @@ return packer.startup(function(use)
 	use({ "mfussenegger/nvim-dap" })
 	use({ "rcarriga/nvim-dap-ui" })
 	use({ "ravenxrz/DAPInstall.nvim" })
+	use({ "theHamsta/nvim-dap-virtual-text" })
 
 	use({
 		"kevinhwang91/rnvimr",

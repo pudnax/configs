@@ -213,9 +213,6 @@ return require("packer").startup(function(use)
         -- run = ":TSUpdate",
         config = function()
             require("core.treesitter").setup()
-
-            local map = require("util").map
-            map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>")
         end,
     })
     use("nvim-treesitter/nvim-treesitter-context")
@@ -228,6 +225,9 @@ return require("packer").startup(function(use)
         requires = "kyazdani42/nvim-web-devicons",
         config = function()
             require("core.nvim-tree").setup()
+
+            local map = require("util").map
+            map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>")
         end,
     })
 
