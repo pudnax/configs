@@ -66,6 +66,7 @@ return packer.startup(function(use)
 	use({ "kevinhwang91/nvim-bqf" })
 	use({ "kylechui/nvim-surround" })
 	use({ "tikhomirov/vim-glsl" })
+	use({ "goolord/alpha-nvim" })
 
 	-- cmp plugins
 	use({ "hrsh7th/nvim-cmp" }) -- The completion plugin
@@ -90,6 +91,7 @@ return packer.startup(function(use)
 	-- Telescope
 	use({ "nvim-telescope/telescope.nvim" })
 	use({ "folke/trouble.nvim" })
+	use({ "nvim-treesitter/nvim-treesitter-textobjects" })
 	use({
 		"nvim-telescope/telescope-fzf-native.nvim",
 		run = "make",

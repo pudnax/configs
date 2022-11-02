@@ -38,3 +38,5 @@ require("neogit").setup({
 })
 
 require("fidget").setup()
+
+require("alpha").setup(require("alpha.themes.dashboard").config)

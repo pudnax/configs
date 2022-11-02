@@ -48,6 +48,7 @@ rust_tools.setup({
 			["rust-analyzer"] = {
 				inlay_hints = {
 					closureReturnTypeHints = true,
+					lifetimeElisionHints = { enable = "skip_trivial" },
 				},
 
 				assits = {
@@ -57,9 +58,7 @@ rust_tools.setup({
 				},
 				diagnostics = {
 					disabled = { "unresolved-import" },
-					experimental = {
-						enable = true,
-					},
+					experimental = { enable = true },
 				},
 				cargo = {
 					loadOutDirFromCheck = true,

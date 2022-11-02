@@ -1,6 +1,6 @@
 require("options")
-require("keymaps")
 require("plugins")
+require("keymaps")
 require("autocommands")
 
 require("user.impatient")
