@@ -28,7 +28,7 @@ vim.opt.laststatus = 3 -- only the last window will always have a status line
 vim.opt.numberwidth = 1 -- minimal number of columns to use for the line number {default 4}
 vim.opt.signcolumn = "yes" -- always show the sign column, otherwise it would shift the text each time
 vim.opt.colorcolumn = "100" -- show vertical line on 100th character
-vim.opt.wrap = false -- display lines as one long line
+vim.opt.wrap = true -- display lines as one long line
 vim.opt.joinspaces = false -- no wraps
 vim.opt.lazyredraw = false -- faster drawing
 vim.opt.scrolloff = 5 -- minimal number of screen lines to keep above and below the cursor
@@ -42,5 +42,5 @@ vim.opt.diffopt:append("iwhite,indent-heuristic") -- diff settings
 vim.opt.grepprg = "rg --vimgrep --follow" -- set rg by default
 
 -- disable nwtree
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1

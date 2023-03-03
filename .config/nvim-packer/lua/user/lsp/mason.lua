@@ -4,7 +4,7 @@ if not status_ok then
 end
 
 local lsp_list = {
-	"sumneko_lua",
+	"lua_ls",
 	"clangd",
 	"pyright",
 	"cmake",
@@ -16,6 +16,7 @@ local lsp_list = {
 	"rust_analyzer",
 	"bashls",
 	"cssls",
+	"wgsl_analyzer",
 }
 
 mason.setup({
@@ -40,42 +41,15 @@ if not lspconfig_status_ok then
 	return
 end
 
-local servers = {
-	"sumneko_lua",
-	"clangd",
-	"pyright",
-	"cmake",
-	"zls",
-	"texlab",
-	"gopls",
-	"jsonls",
-	"tsserver",
-	"bashls",
-	"cssls",
-	"wgsl_analyzer",
-}
-
--- local configs = require("lspconfig.configs")
--- if not configs.wgsl_analyzer then
--- 	configs.wgsl_analyzer = {
--- 		default_config = {
--- 			cmd = { vim.fn.stdpath("data") .. "/mason/bin/wgsl_analyzer" },
--- 			filetypes = { "wgsl" },
--- 			root_dir = lspconfig.util.root_pattern(".git", "wgsl"),
--- 			settings = {},
--- 		},
--- 	}
--- end
-
 local opts = {}
-for _, server in pairs(servers) do
+for _, server in pairs(lsp_list) do
 	opts = {
 		on_attach = require("user.lsp.handlers").on_attach,
 		capabilities = require("user.lsp.handlers").capabilities,
 	}
 
-	if server == "sumneko_lua" then
-		local sumneko_opts = require("user.lsp.settings.sumneko_lua")
+	if server == "lua_ls" then
+		local sumneko_opts = require("user.lsp.settings.lua_ls")
 		opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
 	end
 
