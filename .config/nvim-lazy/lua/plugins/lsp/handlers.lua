@@ -56,9 +56,12 @@ M.on_attach = function(client, bufnr)
 	nmap("<leader>lr", vim.lsp.buf.rename, "Rename")
 	nmap("<leader>la", vim.lsp.buf.code_action, "Code Action")
 	nmap("gd", vim.lsp.buf.definition, "Goto Definition")
+	nmap("gpd", require("goto-preview").goto_preview_definition, "Peek Definition")
 	nmap("gr", require("telescope.builtin").lsp_references, "Goto References")
 	nmap("gi", vim.lsp.buf.implementation, "Goto Implementation")
-	nmap("gD", vim.lsp.buf.type_definition, "Type Definition")
+	nmap("gI", vim.lsp.buf.declaration, "Goto Declaration")
+	nmap("gD", vim.lsp.buf.type_definition, "Goto Type Definition")
+	nmap("gpD", require("goto-preview").goto_preview_type_definition, "Peek Type Definition")
 	nmap("gs", require("telescope.builtin").lsp_document_symbols, "Document Symbols")
 	nmap("gS", require("telescope.builtin").lsp_dynamic_workspace_symbols, "Workspace Symbols")
 	nmap("gw", [[<cmd>Telescope diagnostics bufnr=0<CR>]], "Buffer Diagnostincs")
@@ -69,6 +72,12 @@ M.on_attach = function(client, bufnr)
 	nmap("E", vim.diagnostic.goto_next, "Go to next diagnostic message")
 	nmap("<leader>w", vim.diagnostic.open_float, "Open floating diagnostic message")
 	nmap("<leader>q", vim.diagnostic.setloclist, "Open diagnostics list")
+
+	local status_ok, illuminate = pcall(require, "illuminate")
+	if not status_ok then
+		return
+	end
+	illuminate.on_attach(client)
 end
 
 return M

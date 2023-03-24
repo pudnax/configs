@@ -32,7 +32,7 @@ lualine.setup({
 		lualine_c = {
 			"filename",
 			"fileformat",
-			"lsp_progress",
+			-- "lsp_progress",
 		},
 		lualine_x = {
 			"encoding",

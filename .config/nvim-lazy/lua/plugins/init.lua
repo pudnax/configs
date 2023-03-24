@@ -22,7 +22,7 @@ return {
 
 			-- Useful status updates for LSP
 			-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-			-- { "j-hui/fidget.nvim", opts = {} },
+			{ "j-hui/fidget.nvim", opts = { window = { blend = 0 } } },
 
 			-- Additional lua configuration, makes nvim stuff amazing!
 			"folke/neodev.nvim",
@@ -168,12 +168,12 @@ return {
 	{
 		"xiyaowong/nvim-transparent",
 		opts = {
-			enable = true, -- boolean: enable transparent
 			extra_groups = { -- table/string: additional groups that should be cleared
 				"all",
 				"NormalNC",
 				"NeoTreeNormal",
 				"NeoTreeNormalNC",
+				"NeoTreeEndOfBuffer",
 			},
 		},
 	},
@@ -226,9 +226,12 @@ return {
 	{ "rhysd/clever-f.vim" }, -- better f jumps
 	{ "phaazon/hop.nvim", opts = {} }, -- best motions
 	{ "max397574/better-escape.nvim", opts = { mapping = { "jk", "kj" } } },
-	{ "WhoIsSethDaniel/lualine-lsp-progress.nvim" }, -- interactive lsp status
+	-- { "WhoIsSethDaniel/lualine-lsp-progress.nvim" },          -- interactive lsp status
+	{ "rmagatti/goto-preview", opts = {} }, -- peek lsp commands in separate window
 	{ "windwp/nvim-spectre", opts = {} }, -- Search and Replace
 	{ "NvChad/nvim-colorizer.lua", opts = {} }, -- Color colors in colors
+	{ "RRethy/vim-illuminate" }, -- highlight same words with TreeSitter
+	{ "kylechui/nvim-surround", event = "VeryLazy", opts = {} }, -- Add/change/delete surrounding brackets
 	-- { "f-person/git-blame.nvim" }, --Blame!
 	-- embed terminal
 	{

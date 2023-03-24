@@ -60,18 +60,20 @@ rust_tools.setup({
 					experimental = { enable = true },
 				},
 				cargo = {
+					extraArgs = { "--profile", "rust-analyzer" },
 					loadOutDirFromCheck = true,
 				},
 				procMacro = {
 					enbale = true,
 				},
 				checkOnSave = {
+					-- extraArgs = { "--target-dir", "/home/pudi/.cache/rust-analyzer-cache" },
 					-- enable = false,
 					-- command = "clippy",
 				},
 			},
 		},
-	}, -- rust-analyser options
+	}, -- rust-analyzer options
 
 	dap = {
 		adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path),

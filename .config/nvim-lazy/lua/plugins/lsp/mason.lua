@@ -30,7 +30,24 @@ local servers = {
 	rust_analyzer = {},
 	taplo = {},
 	jsonls = {},
-
+	tsserver = {},
+	wgsl_analyzer = {
+		wgsl = {
+			diagnostics = {
+				typeErrors = true,
+				nagaParsing = true,
+				nagaValidation = true,
+				nagaVersion = "main",
+			},
+			inlayHints = {
+				enabled = true,
+				typeHints = true,
+				parameterHints = true,
+				structLayoutHints = true,
+				typeVerbosity = "compact",
+			},
+		},
+	},
 	lua_ls = {
 		Lua = {
 			diagnostics = { globals = { "vim" } },
