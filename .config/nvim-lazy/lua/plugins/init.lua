@@ -65,7 +65,7 @@ return {
 	},
 
 	-- Useful plugin to show you pending keybinds.
-	{ "folke/which-key.nvim", opts = {} },
+	{ "folke/which-key.nvim",  opts = {} },
 	{
 		-- Adds git releated signs to the gutter, as well as utilities for managing changes
 		"lewis6991/gitsigns.nvim",
@@ -217,21 +217,21 @@ return {
 	{ "simrat39/rust-tools.nvim" },
 	{ "saecki/crates.nvim" },
 
-	{ "kaplanz/nvim-retrail", opts = {} }, -- Trim and highlight whitespace
-	{ "andymass/vim-matchup" }, -- Better matching brackets on S-5
-	{ "stevearc/dressing.nvim", opts = {} }, -- Pretty UI
-	{ "tikhomirov/vim-glsl" }, -- glsl support
-	{ "nacro90/numb.nvim", opts = {} }, -- peek line jumps
-	{ "ron-rs/ron.vim" }, -- ron file suppoort
-	{ "rhysd/clever-f.vim" }, -- better f jumps
-	{ "phaazon/hop.nvim", opts = {} }, -- best motions
+	{ "kaplanz/nvim-retrail",         opts = {} }, -- Trim and highlight whitespace
+	{ "andymass/vim-matchup" },           -- Better matching brackets on S-5
+	{ "stevearc/dressing.nvim",       opts = {} }, -- Pretty UI
+	{ "tikhomirov/vim-glsl" },            -- glsl support
+	{ "nacro90/numb.nvim",            opts = {} }, -- peek line jumps
+	{ "ron-rs/ron.vim" },                 -- ron file suppoort
+	{ "rhysd/clever-f.vim" },             -- better f jumps
+	{ "phaazon/hop.nvim",             opts = {} }, -- best motions
 	{ "max397574/better-escape.nvim", opts = { mapping = { "jk", "kj" } } },
 	-- { "WhoIsSethDaniel/lualine-lsp-progress.nvim" },          -- interactive lsp status
-	{ "rmagatti/goto-preview", opts = {} }, -- peek lsp commands in separate window
-	{ "windwp/nvim-spectre", opts = {} }, -- Search and Replace
-	{ "NvChad/nvim-colorizer.lua", opts = {} }, -- Color colors in colors
-	{ "RRethy/vim-illuminate" }, -- highlight same words with TreeSitter
-	{ "kylechui/nvim-surround", event = "VeryLazy", opts = {} }, -- Add/change/delete surrounding brackets
+	{ "rmagatti/goto-preview",        opts = {} },            -- peek lsp commands in separate window
+	{ "windwp/nvim-spectre",          opts = {} },            -- Search and Replace
+	{ "NvChad/nvim-colorizer.lua",    opts = {} },            -- Color colors in colors
+	{ "RRethy/vim-illuminate" },                              -- highlight same words with TreeSitter
+	{ "kylechui/nvim-surround",       event = "VeryLazy",                 opts = {} }, -- Add/change/delete surrounding brackets
 	-- { "f-person/git-blame.nvim" }, --Blame!
 	-- embed terminal
 	{
@@ -271,12 +271,7 @@ return {
 			require("plugins.config.autopairs")
 		end,
 	},
-	{
-		"folke/todo-comments.nvim",
-		opts = {
-			signs = false,
-		},
-		-- Structured error messages
-		{ "https://git.sr.ht/~whynothugo/lsp_lines.nvim", opts = {} },
-	},
+	{ "folke/todo-comments.nvim",      opts = { signs = false } },
+	-- Structured error messages
+	-- { "https://git.sr.ht/~whynothugo/lsp_lines.nvim", opts = {} },
 }

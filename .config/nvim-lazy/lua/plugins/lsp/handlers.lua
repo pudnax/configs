@@ -2,9 +2,9 @@ local M = {}
 
 local signs = {
 	{ name = "DiagnosticSignError", text = "" },
-	{ name = "DiagnosticSignWarn",  text = "" },
-	{ name = "DiagnosticSignHint",  text = "" },
-	{ name = "DiagnosticSignInfo",  text = "" },
+	{ name = "DiagnosticSignWarn", text = "" },
+	{ name = "DiagnosticSignHint", text = "" },
+	{ name = "DiagnosticSignInfo", text = "" },
 }
 
 for _, sign in ipairs(signs) do
@@ -12,7 +12,7 @@ for _, sign in ipairs(signs) do
 end
 
 M.config = {
-	virtual_text = false, -- disable virtual text
+	virtual_text = true, -- disable virtual text
 	signs = {
 		active = signs, -- show signs
 	},
@@ -67,7 +67,7 @@ M.on_attach = function(client, bufnr)
 	nmap("gw", [[<cmd>Telescope diagnostics bufnr=0<CR>]], "Buffer Diagnostincs")
 	nmap("gW", [[<cmd>Telescope diagnostics<CR>]], "Workspace diagnostics")
 	nmap("K", vim.lsp.buf.hover, "Hover Documentation")
-	nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
+	-- nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
 	nmap("W", vim.diagnostic.goto_prev, "Go to previous diagnostic message")
 	nmap("E", vim.diagnostic.goto_next, "Go to next diagnostic message")
 	nmap("<leader>w", vim.diagnostic.open_float, "Open floating diagnostic message")
