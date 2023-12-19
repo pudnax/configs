@@ -16,6 +16,8 @@ alias rm='rm -i'
 export PATH="$HOME/.cargo/bin:$PATH"
 bass source $HOME/vulkan/latest/setup-env.sh
 
+set -gx GPG_TTY (tty)
+
 if command -v exa > /dev/null
 	abbr -a l 'exa'
 	abbr -a ls 'exa'
