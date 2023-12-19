@@ -1,4 +1,7 @@
-local keymap = require("utils").keymap
+local keymap = function(mode, lhs, rhs, str)
+	local opts = { desc = str, noremap = true, silent = true }
+	vim.keymap.set(mode, lhs, rhs, opts)
+end
 
 vim.keymap.set({ "n", "v" }, "q:", "<Nop>", { silent = true })
 vim.keymap.set({ "n", "v" }, "Q:", "<Nop>", { silent = true })
@@ -50,12 +53,6 @@ keymap("n", "<leader>e", ":NeoTreeFocusToggle<CR>", "File Tree")
 keymap("n", "]q", ":cnext<CR>", "")
 keymap("n", "[q", ":cprev<CR>", "")
 keymap("n", "<C-q>", ":call QuickFixToggle()<CR>", "")
-
-keymap("n", "<F8>", "<cmd>SymbolsOutline<CR>", "Symbols Outline")
-
--- Hop
-keymap("n", "s", ":HopChar2<cr>", "")
-keymap("n", "S", ":HopWord<cr>", "")
 
 -- Telescope
 local builtin = require("telescope.builtin")

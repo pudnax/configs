@@ -4,13 +4,6 @@ return {
 	-- Git related plugins
 	"tpope/vim-fugitive",
 	"tpope/vim-rhubarb",
-	"kdheepak/lazygit.nvim",
-	{
-		"TimUntersberger/neogit",
-		dependencies = {
-			"sindrets/diffview.nvim",
-		},
-	},
 
 	{
 		-- LSP Configuration & Plugins
@@ -22,12 +15,13 @@ return {
 
 			-- Useful status updates for LSP
 			-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-			{ "j-hui/fidget.nvim", opts = { window = { blend = 0 } } },
+			{ "j-hui/fidget.nvim", opts = { notification = { window = { winblend = 0 } } } },
 
 			-- Additional lua configuration, makes nvim stuff amazing!
 			"folke/neodev.nvim",
 		},
 	},
+
 	{
 		"williamboman/mason.nvim",
 		config = function()
@@ -65,7 +59,7 @@ return {
 	},
 
 	-- Useful plugin to show you pending keybinds.
-	{ "folke/which-key.nvim",  opts = {} },
+	{ "folke/which-key.nvim", opts = {} },
 	{
 		-- Adds git releated signs to the gutter, as well as utilities for managing changes
 		"lewis6991/gitsigns.nvim",
@@ -109,20 +103,21 @@ return {
 	{
 		-- Add indentation guides even on blank lines
 		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
 		-- Enable `lukas-reineke/indent-blankline.nvim`
 		-- See `:help indent_blankline.txt`
 		opts = {
-			char = "▏",
-			show_trailing_blankline_indent = false,
-			show_first_indent_level = true,
-			use_treesitter = true,
-			show_current_context = true,
-			buftype_exclude = { "terminal", "nofile" },
-			filetype_exclude = {
-				"help",
-				"packer",
-				"NvimTree",
-			},
+			--			char = "▏",
+			--			show_trailing_blankline_indent = false,
+			--			show_first_indent_level = true,
+			--			use_treesitter = true,
+			--			show_current_context = true,
+			--			buftype_exclude = { "terminal", "nofile" },
+			--			filetype_exclude = {
+			--				"help",
+			--				"packer",
+			--				"NvimTree",
+			--			},
 		},
 	},
 
@@ -217,21 +212,21 @@ return {
 	{ "simrat39/rust-tools.nvim" },
 	{ "saecki/crates.nvim" },
 
-	{ "kaplanz/nvim-retrail",         opts = {} }, -- Trim and highlight whitespace
-	{ "andymass/vim-matchup" },           -- Better matching brackets on S-5
-	{ "stevearc/dressing.nvim",       opts = {} }, -- Pretty UI
-	{ "tikhomirov/vim-glsl" },            -- glsl support
-	{ "nacro90/numb.nvim",            opts = {} }, -- peek line jumps
-	{ "ron-rs/ron.vim" },                 -- ron file suppoort
-	{ "rhysd/clever-f.vim" },             -- better f jumps
-	{ "phaazon/hop.nvim",             opts = {} }, -- best motions
+	{ "kaplanz/nvim-retrail", opts = {} }, -- Trim and highlight whitespace
+	{ "andymass/vim-matchup" }, -- Better matching brackets on S-5
+	{ "stevearc/dressing.nvim", opts = {} }, -- Pretty UI
+	{ "tikhomirov/vim-glsl" }, -- glsl support
+	{ "nacro90/numb.nvim", opts = {} }, -- peek line jumps
+	{ "ron-rs/ron.vim" }, -- ron file suppoort
+	{ "rhysd/clever-f.vim" }, -- better f jumps
+	-- { "phaazon/hop.nvim",             opts = {} }, -- best motions
 	{ "max397574/better-escape.nvim", opts = { mapping = { "jk", "kj" } } },
 	-- { "WhoIsSethDaniel/lualine-lsp-progress.nvim" },          -- interactive lsp status
-	{ "rmagatti/goto-preview",        opts = {} },            -- peek lsp commands in separate window
-	{ "windwp/nvim-spectre",          opts = {} },            -- Search and Replace
-	{ "NvChad/nvim-colorizer.lua",    opts = {} },            -- Color colors in colors
-	{ "RRethy/vim-illuminate" },                              -- highlight same words with TreeSitter
-	{ "kylechui/nvim-surround",       event = "VeryLazy",                 opts = {} }, -- Add/change/delete surrounding brackets
+	{ "rmagatti/goto-preview", opts = {} }, -- peek lsp commands in separate window
+	{ "windwp/nvim-spectre", opts = {} }, -- Search and Replace
+	{ "NvChad/nvim-colorizer.lua", opts = {} }, -- Color colors in colors
+	{ "RRethy/vim-illuminate" }, -- highlight same words with TreeSitter
+	{ "kylechui/nvim-surround", event = "VeryLazy", opts = {} }, -- Add/change/delete surrounding brackets
 	-- { "f-person/git-blame.nvim" }, --Blame!
 	-- embed terminal
 	{
@@ -240,13 +235,16 @@ return {
 			require("plugins.config.toggleterm")
 		end,
 	},
-	-- ctags enchanced
-	{ "simrat39/symbols-outline.nvim", opts = { width = 15, auto_preview = false } },
+
 	{
-		"kevinhwang91/nvim-bqf",
+		"hedyhli/outline.nvim",
+		lazy = true,
+		cmd = { "Outline", "OutlineOpen" },
+		keys = { -- Example mapping to toggle outline
+			{ "<F8>", "<cmd>Outline<CR>", desc = "Toggle outline" },
+		},
 		opts = {
-			auto_enable = true,
-			auto_resize_height = true, -- highly recommended enable
+			-- Your setup opts here
 		},
 	},
 
@@ -271,7 +269,7 @@ return {
 			require("plugins.config.autopairs")
 		end,
 	},
-	{ "folke/todo-comments.nvim",      opts = { signs = false } },
+	{ "folke/todo-comments.nvim", opts = { signs = false } },
 	-- Structured error messages
 	-- { "https://git.sr.ht/~whynothugo/lsp_lines.nvim", opts = {} },
 }

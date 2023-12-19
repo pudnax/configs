@@ -7,7 +7,7 @@ vim.filetype.add({ extension = { wgsl = "wgsl" } })
 
 configs.setup({
 	-- Add languages to be installed here that you want installed for treesitter
-	ensure_installed = { "c", "cpp", "go", "lua", "python", "rust", "tsx", "typescript", "help", "vim", "glsl", "wgsl" },
+	ensure_installed = { "c", "cpp", "go", "lua", "python", "rust", "tsx", "typescript", "vim", "glsl", "wgsl" },
 
 	-- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
 	auto_install = true,

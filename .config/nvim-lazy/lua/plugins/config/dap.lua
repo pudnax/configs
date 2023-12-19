@@ -17,7 +17,7 @@ mason_dap.setup({
 	ensure_installed = { "cppdbg", "codelldb" },
 	automatic_setup = true,
 })
-require("mason-nvim-dap").setup_handlers({})
+require("mason-nvim-dap").setup()
 
 dapui.setup({
 	layouts = {

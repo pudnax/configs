@@ -1,19 +1,9 @@
+set -g fish_greeting
+
 abbr -a g git
-abbr -a gc 'git checkout'
-abbr -a ga 'git add -p'
-abbr -a vimdiff 'nvim -d'
-abbr -a ct 'cargo t'
 
 alias o=xdg-open
 alias c=cargo
-alias ccw='cargo clippy 2>&1 | rg -i --multiline "(^error.*\n.*)|(aborting)|(warnings)"'
-alias cck="cargo watch -s 'cargo clippy --color always 2>&1 | less -R'"
-
-alias tmux="TERM=screen-256color-bce tmux"
-
-export EDITOR="vim -i"
-
-alias psr=procs
 
 alias dur=dust
 
@@ -23,91 +13,8 @@ alias cp="cp -i"
 alias mv='mv -i'
 alias rm='rm -i'
 
-## get top process eating memory
-alias psmem='ps auxf | sort -nr -k 4'
-alias psmem10='ps auxf | sort -nr -k 4 | head -10'
-
-## get top process eating cpu ##
-alias pscpu='ps auxf | sort -nr -k 3'
-alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
-
 export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="$HOME/go/bin:$PATH"
-export PATH="$HOME/.gem/ruby/2.7.0/bin:$PATH"
-export PATH="$HOME/.nimble/bin:$PATH"
-export PATH="$HOME/.dotnet/tools:$PATH"
-export PATH="$HOME/bins:$PATH"
-export PATH="$HOME/.whale/bin:$PATH"
-export PATH="$HOME/HOME/third_party/zig:$PATH"
-export PATH="$HOME/HOME/third_party/zls/zig-out/bin:$PATH"
-
-export GPG_TTY=(tty)
-
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# opam configuration
-export QT_QPA_PLATFORMTHEME="qt5ct"
-export EDITOR=/usr/bin/vim
-export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
-# fix "xdg-open fork-bomb" export your preferred browser from here
-export BROWSER=/usr/bin/firefox
-
-bind -M insert \t accept-autosuggestion
-set fish_greeting
-
-bass source ~/HOME/third_party/vulkan/1.2.176.1/setup-env.sh
-# export VULKAN_SDK=~/HOME/third_party/vulkan/1.2.176.1/x86_64
-# export PATH=$VULKAN_SDK/bin:$PATH
-# export LD_LIBRARY_PATH=$VULKAN_SDK/lib:$LD_LIBRARY_PATH
-# export VK_LAYER_PATH=$VULKAN_SDK/etc/vulkan/explicit_layer.d
-
-function _z_cd
-    cd $argv
-    or return $status
-
-    commandline -f repaint
-
-    if test "$_ZO_ECHO" = "1"
-        echo $PWD
-    end
-end
-
-function z
-    set argc (count $argv)
-
-    if test $argc -eq 0
-        _z_cd $HOME
-    else if begin; test $argc -eq 1; and test $argv[1] = '-'; end
-        _z_cd -
-    else
-        set -l _zoxide_result (zoxide query -- $argv)
-        and _z_cd $_zoxide_result
-    end
-end
-
-function zi
-    set -l _zoxide_result (zoxide query -i -- $argv)
-    and _z_cd $_zoxide_result
-end
-
-
-abbr -a za 'zoxide add'
-
-abbr -a zq 'zoxide query'
-abbr -a zqi 'zoxide query -i'
-
-abbr -a zr 'zoxide remove'
-function zri
-    set -l _zoxide_result (zoxide query -i -- $argv)
-    and zoxide remove $_zoxide_result
-end
-
-
-function _zoxide_hook --on-variable PWD
-    zoxide add (pwd -L)
-end
+bass source $HOME/vulkan/latest/setup-env.sh
 
 if command -v exa > /dev/null
 	abbr -a l 'exa'
@@ -122,22 +29,6 @@ else
 	abbr -a lll 'ls -la'
 end
 
-# Fish git prompt
-set __fish_git_prompt_showuntrackedfiles 'yes'
-set __fish_git_prompt_showdirtystate 'yes'
-set __fish_git_prompt_showstashstate ''
-set __fish_git_prompt_showupstream 'none'
-set -g fish_prompt_pwd_dir_length 3
-
-# For RLS
-# https://github.com/fish-shell/fish-shell/issues/2456
-# setenv LD_LIBRARY_PATH (rustc +nightly --print sysroot)"/lib:$LD_LIBRARY_PATH"
-# setenv RUST_SRC_PATH (rustc --print sysroot)"/lib/rustlib/src/rust/src"
-
-setenv FZF_DEFAULT_COMMAND 'fd --type file --follow'
-setenv FZF_CTRL_T_COMMAND 'fd --type file --follow'
-setenv FZF_DEFAULT_OPTS '--height 20%'
-
 function ex --description "Universal archive extractor script"
     for file in $argv
         switch $file
@@ -148,7 +39,8 @@ function ex --description "Universal archive extractor script"
             case '*bz2'
                 bunzip2  $file
             case '*.rar'
-                unrar x  $file
+	        # unrar x  $file
+		ark -b $file
             case '*.tar'
                 tar xf  $file
             case '*.tbz2'
@@ -166,3 +58,109 @@ function ex --description "Universal archive extractor script"
         end
     end
 end
+
+# =============================================================================
+#
+# Utility functions for zoxide.
+#
+
+# pwd based on the value of _ZO_RESOLVE_SYMLINKS.
+function __zoxide_pwd
+    builtin pwd -L
+end
+
+# A copy of fish's internal cd function. This makes it possible to use
+# `alias cd=z` without causing an infinite loop.
+if ! builtin functions --query __zoxide_cd_internal
+    if builtin functions --query cd
+        builtin functions --copy cd __zoxide_cd_internal
+    else
+        alias __zoxide_cd_internal='builtin cd'
+    end
+end
+
+# cd + custom logic based on the value of _ZO_ECHO.
+function __zoxide_cd
+    __zoxide_cd_internal $argv
+end
+
+# =============================================================================
+#
+# Hook configuration for zoxide.
+#
+
+# Initialize hook to add new entries to the database.
+function __zoxide_hook --on-variable PWD
+    test -z "$fish_private_mode"
+    and command zoxide add -- (__zoxide_pwd)
+end
+
+# =============================================================================
+#
+# When using zoxide with --no-cmd, alias these internal functions as desired.
+#
+
+if test -z $__zoxide_z_prefix
+    set __zoxide_z_prefix 'z!'
+end
+set __zoxide_z_prefix_regex ^(string escape --style=regex $__zoxide_z_prefix)
+
+# Jump to a directory using only keywords.
+function __zoxide_z
+    set -l argc (count $argv)
+    if test $argc -eq 0
+        __zoxide_cd $HOME
+    else if test "$argv" = -
+        __zoxide_cd -
+    else if test $argc -eq 1 -a -d $argv[1]
+        __zoxide_cd $argv[1]
+    else if set -l result (string replace --regex $__zoxide_z_prefix_regex '' $argv[-1]); and test -n $result
+        __zoxide_cd $result
+    else
+        set -l result (command zoxide query --exclude (__zoxide_pwd) -- $argv)
+        and __zoxide_cd $result
+    end
+end
+
+# Completions.
+function __zoxide_z_complete
+    set -l tokens (commandline --current-process --tokenize)
+    set -l curr_tokens (commandline --cut-at-cursor --current-process --tokenize)
+
+    if test (count $tokens) -le 2 -a (count $curr_tokens) -eq 1
+        # If there are < 2 arguments, use `cd` completions.
+        complete --do-complete "'' "(commandline --cut-at-cursor --current-token) | string match --regex '.*/$'
+    else if test (count $tokens) -eq (count $curr_tokens); and ! string match --quiet --regex $__zoxide_z_prefix_regex. $tokens[-1]
+        # If the last argument is empty and the one before doesn't start with
+        # $__zoxide_z_prefix, use interactive selection.
+        set -l query $tokens[2..-1]
+        set -l result (zoxide query --exclude (__zoxide_pwd) --interactive -- $query)
+        and echo $__zoxide_z_prefix$result
+        commandline --function repaint
+    end
+end
+complete --command __zoxide_z --no-files --arguments '(__zoxide_z_complete)'
+
+# Jump to a directory using interactive search.
+function __zoxide_zi
+    set -l result (command zoxide query --interactive -- $argv)
+    and __zoxide_cd $result
+end
+
+# =============================================================================
+#
+# Commands for zoxide. Disable these using --no-cmd.
+#
+
+abbr --erase z &>/dev/null
+alias z=__zoxide_z
+
+abbr --erase zi &>/dev/null
+alias zi=__zoxide_zi
+
+# =============================================================================
+#
+# To initialize zoxide, add this to your configuration (usually
+# ~/.config/fish/config.fish):
+#
+#   zoxide init fish | source

@@ -89,3 +89,28 @@ mason_null_ls.setup({
 	-- auto-install configured formatters & linters (with null-ls)
 	automatic_installation = true,
 })
+
+vim.lsp.handlers["wgsl-analyzer/requestConfiguration"] = function(err, result, ctx, config)
+	return {
+		success = true,
+		customImports = { _dummy_ = "dummy" },
+		shaderDefs = {},
+		trace = {
+			extension = false,
+			server = false,
+		},
+		inlayHints = {
+			enabled = true,
+			typeHints = true,
+			parameterHints = true,
+			structLayoutHints = true,
+			typeVerbosity = "inner",
+		},
+		diagnostics = {
+			typeErrors = true,
+			nagaParsingErrors = true,
+			nagaValidationErrors = true,
+			nagaVersion = "main",
+		},
+	}
+end

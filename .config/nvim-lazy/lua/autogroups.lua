@@ -1,5 +1,4 @@
 local autocmd = vim.api.nvim_create_autocmd
-local keymap = require("utils").keymap
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -24,9 +23,14 @@ autocmd({ "FileType" }, {
 })
 
 autocmd("FileType", {
-	pattern = { "glsl, wgsl" },
+	pattern = { "glsl" },
 	callback = function()
-		keymap("n", "<C-f>", "<cmd>pyf ~/bins/clang-format.py<cr>", "Format with clang-format")
+		vim.keymap.set(
+			"n",
+			"<C-f>",
+			"<cmd>pyf ~/bins/clang-format.py<cr>",
+			{ desc = "Format with clang-format", noremap = true, silent = true }
+		)
 	end,
 })
 

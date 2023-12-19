@@ -50,7 +50,7 @@ rust_tools.setup({
 					closureReturnTypeHints = true,
 					lifetimeElisionHints = { enable = "skip_trivial" },
 				},
-				assits = {
+				assist = {
 					-- importMergeBehaviour = "last",
 					importPrefix = "by_self",
 					expressionFillDefault = "default",
