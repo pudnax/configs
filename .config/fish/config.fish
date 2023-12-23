@@ -9,13 +9,14 @@ alias dur=dust
 
 alias nv=nvim
 
-alias cp="cp -i"
+# alias cp="cp -i"
 alias mv='mv -i'
 alias rm='rm -i'
 
 export PATH="$HOME/.cargo/bin:$PATH"
-bass source $HOME/vulkan/latest/setup-env.sh
+# bass source $HOME/vulkan/latest/setup-env.sh
 
+source (/usr/bin/starship init fish --print-full-init | psub)
 set -gx GPG_TTY (tty)
 
 if command -v exa > /dev/null
